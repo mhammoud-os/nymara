@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Atom, Database, Flask } from 'lucide-react';
+import { Atom, Database, FlaskConical } from 'lucide-react';
 
 const TechDeepDiveSection = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -9,7 +8,7 @@ const TechDeepDiveSection = () => {
     {
       id: "nano-filter",
       title: "Nano-Filter Coating",
-      icon: <Flask className="w-5 h-5" />,
+      icon: <FlaskConical className="w-5 h-5" />,
       content: (
         <div>
           <p className="text-gray-300 mb-6">
