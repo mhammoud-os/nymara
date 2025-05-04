@@ -90,7 +90,45 @@ const BusinessModelSection = () => {
                 </li>
               </ul>
             </div>
-            
+                        {/* SUFPaaS Model */}
+             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 relative overflow-hidden group hover:border-nymara-aqua/50 transition-colors">
+               <div className="absolute top-0 right-0 w-32 h-32 bg-nymara-aqua/10 rounded-full blur-2xl group-hover:bg-nymara-aqua/20 transition-colors"></div>
+               
+               <div className="flex items-center gap-4 mb-6">
+                 <div className="w-12 h-12 rounded-full bg-nymara-aqua/20 flex items-center justify-center">
+                   <ChartBar className="w-6 h-6 text-nymara-aqua" />
+                 </div>
+                 <h3 className="text-2xl font-bold text-white">
+                   SUFPaaS <span className="text-sm font-normal text-gray-400">(Stormwater Urban Filtration Platform as a Service)</span>
+                 </h3>
+               </div>
+               
+               <p className="text-gray-300 mb-6">
+                 Our software platform provides cities with real-time monitoring, predictive analytics, and maintenance optimization for their hyper-porous road networks.
+               </p>
+               
+               <ul className="space-y-3">
+                 <li className="flex items-start gap-3">
+                   <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
+                     <span className="text-nymara-aqua text-xs">✓</span>
+                   </span>
+                   <span className="text-gray-300 text-sm">Tiered SaaS pricing based on city size, flood risk, and implementation scale</span>
+                 </li>
+                 <li className="flex items-start gap-3">
+                   <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
+                     <span className="text-nymara-aqua text-xs">✓</span>
+                   </span>
+                   <span className="text-gray-300 text-sm">Annual contracts with 92% renewal rates in pilot cities</span>
+                 </li>
+                 <li className="flex items-start gap-3">
+                   <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
+                     <span className="text-nymara-aqua text-xs">✓</span>
+                   </span>
+                   <span className="text-gray-300 text-sm">Data-driven insights reduce maintenance costs by 34% on average</span>
+                 </li>
+               </ul>
+             </div>
+           </div>
             
           
           {/* Right side: City Comparison */}
