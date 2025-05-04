@@ -16,8 +16,8 @@ const Index = () => {
     <div className="min-h-screen bg-nymara-dark text-white overflow-x-hidden">
       <NavBar />
       <HeroSection />
-      <ChallengeSection />
       <SolutionSection />
+      <ChallengeSection />
       <TechDeepDiveSection />
       <BusinessModelSection />
       <ImpactCalculatorSection />
