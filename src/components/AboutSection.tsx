@@ -4,9 +4,19 @@ import React from 'react';
 // Team members data
 const teamMembers = [
   {
+    name: "Ved Sunkari",
+    title: "Climate Resilience Engineer",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+  },
+  {
     name: "Malek Hammoud",
     title: "Drone-to-Data Visionary",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+  },
+  {
+    name: "Laasya Goriparti",
+    title: "AI Integration Specialist",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
   },
   {
     name: "Anand Ajith",
@@ -14,20 +24,11 @@ const teamMembers = [
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
   },
   {
-    name: "Ved Sunkari",
-    title: "Climate Resilience Engineer",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
-  },
-  {
     name: "Bhavi",
     title: "Urban Water Systems Specialist",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
   },
-  {
-    name: "Laasya Goriparti",
-    title: "AI Integration Specialist",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
-  }
+
 ];
 
 const AboutSection = () => {
