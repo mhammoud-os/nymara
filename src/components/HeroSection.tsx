@@ -49,7 +49,7 @@ const HeroSection = () => {
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Grid Pattern Background */}
-      <div className="absolute inset-0 grid-pattern opacity-20"><img src="bg.jpg" alt="city roads"></div>
+      <div className="absolute inset-0 grid-pattern opacity-20"><img src="Blue and White Circle Surfing Club Logo.png" alt="city roads"></div>
       
       {/* Content */}
       <div className="container mx-auto px-4 z-10">
