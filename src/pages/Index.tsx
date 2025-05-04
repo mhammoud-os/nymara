@@ -16,13 +16,13 @@ const Index = () => {
     <div className="min-h-screen bg-nymara-dark text-white overflow-x-hidden">
       <NavBar />
       <HeroSection />
-      <AboutSection />
       <ChallengeSection />
       <SolutionSection />
       <TechDeepDiveSection />
       <BusinessModelSection />
       <ImpactCalculatorSection />
       <InvestPartnerSection />
+      <AboutSection />
       <Footer />
     </div>
   );
