@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Layers, Droplet, Filter, Pipes } from 'lucide-react';
+import { Layers, Droplet, Filter, FlaskConical } from 'lucide-react';
 
 const SolutionSection = () => {
   const [activeLayer, setActiveLayer] = useState(0);
@@ -46,7 +46,7 @@ const SolutionSection = () => {
     setTimeout(() => setAnimating(false), 1000);
   };
 
-  // Updated Layer data to match the image
+  // Updated Layer data with FlaskConical instead of Pipes
   const layers = [
     {
       name: "Porous Concrete",
@@ -76,7 +76,7 @@ const SolutionSection = () => {
       name: "Subgrade (Existing Soil)",
       description: "Natural ground that receives filtered water, replenishing groundwater and preventing flooding",
       color: "from-stone-700 to-stone-800",
-      icon: <Pipes className="h-6 w-6" />,
+      icon: <FlaskConical className="h-6 w-6" />,
       bgColor: "bg-stone-800",
       textureUrl: "/lovable-uploads/3f7bf46d-3a08-4926-b447-375af9e82a9a.png"
     }
