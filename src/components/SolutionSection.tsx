@@ -1,11 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { Layers, Droplet, Filter, FlaskConical, Paintbrush } from 'lucide-react';
+import { useIsMobile } from '../hooks/use-mobile';
 
 const SolutionSection = () => {
   const [activeLayer, setActiveLayer] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [animating, setAnimating] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -102,7 +104,7 @@ const SolutionSection = () => {
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           {/* Road cross-section visualization - Updated to use solid colors */}
           <div className="lg:w-1/2 relative">
-            <div className="relative h-[600px] w-full max-w-xl mx-auto border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+            <div className="relative h-[500px] md:h-[600px] w-full max-w-xl mx-auto border border-white/10 rounded-xl overflow-hidden shadow-2xl">
               {/* Water animation */}
               <div className="absolute inset-0 pointer-events-none">
                 {isVisible && Array.from({ length: 15 }).map((_, i) => (
@@ -152,13 +154,13 @@ const SolutionSection = () => {
                       
                       {/* Layer label */}
                       <div className={`absolute inset-0 flex items-center justify-start p-6 transition-transform duration-500 ${isActive ? '' : 'opacity-70'}`}>
-                        <h3 className="text-white text-2xl md:text-4xl font-light drop-shadow-lg">
+                        <h3 className="text-white text-xl md:text-2xl lg:text-4xl font-light drop-shadow-lg">
                           {layer.name}
-                          {index === 4 && <span className="block text-xl text-gray-200/80">(existing soil)</span>}
+                          {index === 4 && <span className="block text-sm md:text-xl text-gray-200/80">(existing soil)</span>}
                         </h3>
                       </div>
                       
-                      {/* Pulse indicator for active layer */}
+                      {/* Only ONE circle highlight for active layer */}
                       {isActive && (
                         <div className="absolute right-4 top-4 w-4 h-4 bg-nymara-aqua rounded-full animate-pulse"></div>
                       )}
@@ -183,9 +185,9 @@ const SolutionSection = () => {
                 ))}
               </div>
               
-              {/* Water droplets animation at the top */}
+              {/* Water droplets animation at the top - reduced for mobile */}
               <div className="absolute top-0 left-0 w-full">
-                {isVisible && Array.from({ length: 5 }).map((_, i) => (
+                {isVisible && Array.from({ length: isMobile ? 3 : 5 }).map((_, i) => (
                   <div
                     key={i}
                     className="absolute animate-bounce"
@@ -210,40 +212,40 @@ const SolutionSection = () => {
           
           {/* Layer details */}
           <div className="lg:w-1/2">
-            <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 transition-all duration-500 ${animating ? 'scale-105' : ''}`}>
-              <h3 className="text-3xl font-bold text-nymara-aqua mb-3 flex items-center gap-3">
+            <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 md:p-8 transition-all duration-500 ${animating ? 'scale-105' : ''}`}>
+              <h3 className="text-2xl md:text-3xl font-bold text-nymara-aqua mb-3 flex items-center gap-3">
                 {layers[activeLayer].icon}
                 {layers[activeLayer].name}
               </h3>
               
-              <p className="text-gray-300 mb-8 text-lg">
+              <p className="text-gray-300 mb-8 text-base md:text-lg">
                 {layers[activeLayer].description}
               </p>
               
               {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-8">
                 <div className="text-center bg-white/5 rounded-lg p-4 transition-all hover:bg-white/10">
-                  <div className="text-3xl font-bold text-white mb-2">57.82</div>
-                  <p className="text-sm text-nymara-aqua">in/hr absorption</p>
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-2">57.82</div>
+                  <p className="text-xs md:text-sm text-nymara-aqua">in/hr absorption</p>
                 </div>
                 
                 <div className="text-center bg-white/5 rounded-lg p-4 transition-all hover:bg-white/10">
-                  <div className="text-3xl font-bold text-white mb-2">75%</div>
-                  <p className="text-sm text-nymara-aqua">porosity</p>
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-2">75%</div>
+                  <p className="text-xs md:text-sm text-nymara-aqua">porosity</p>
                 </div>
                 
                 <div className="text-center bg-white/5 rounded-lg p-4 transition-all hover:bg-white/10">
-                  <div className="text-3xl font-bold text-white mb-2">$8.03</div>
-                  <p className="text-sm text-nymara-aqua">cost per m²</p>
+                  <div className="text-2xl md:text-3xl font-bold text-white mb-2">$8.03</div>
+                  <p className="text-xs md:text-sm text-nymara-aqua">cost per m²</p>
                 </div>
               </div>
               
-              {/* Layer selection buttons */}
-              <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
+              {/* Layer selection buttons - grid for mobile */}
+              <div className="mt-8 grid grid-cols-2 gap-2 md:gap-3 md:grid-cols-3 lg:grid-cols-5">
                 {layers.map((layer, index) => (
                   <button
                     key={index}
-                    className={`py-3 px-3 rounded-lg text-sm font-medium transition-all flex flex-col items-center justify-center gap-2 ${
+                    className={`py-2 md:py-3 px-2 md:px-3 rounded-lg text-xs md:text-sm font-medium transition-all flex flex-col items-center justify-center gap-2 ${
                       index === activeLayer
                         ? `bg-gradient-to-r ${layer.color} text-white`
                         : "bg-white/5 text-gray-400 hover:bg-white/10"
@@ -251,19 +253,19 @@ const SolutionSection = () => {
                     onClick={() => handleLayerClick(index)}
                   >
                     {layer.icon}
-                    <span className="text-center">{layer.name}</span>
+                    <span className="text-center">{layer.name.split(' ')[0]}</span>
                   </button>
                 ))}
               </div>
               
               {/* CTA */}
-              <div className="mt-10">
+              <div className="mt-8 md:mt-10">
                 <a 
                   href="#tech-deep-dive" 
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-nymara-aqua to-blue-600 px-6 py-3 rounded-full text-white font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-nymara-aqua to-blue-600 px-4 md:px-6 py-3 rounded-full text-white text-sm md:text-base font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all"
                 >
                   <span>Learn More About Our Technology</span>
-                  <Filter className="w-5 h-5" />
+                  <Filter className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               </div>
             </div>
