@@ -6,7 +6,6 @@ import { useIsMobile } from '../hooks/use-mobile';
 const SolutionSection = () => {
   const [activeLayer, setActiveLayer] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [animating, setAnimating] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -31,24 +30,11 @@ const SolutionSection = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (!isVisible) return;
-
-    // Auto-cycle through layers when visible
-    const interval = setInterval(() => {
-      setActiveLayer((prev) => (prev + 1) % 5);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isVisible]);
-
   const handleLayerClick = (index) => {
     setActiveLayer(index);
-    setAnimating(true);
-    setTimeout(() => setAnimating(false), 1000);
   };
 
-  // Updated Layer data with solid colors and added Nanocoating layer
+  // Layer data with solid colors
   const layers = [
     {
       name: "Nanocoating",
@@ -88,42 +74,24 @@ const SolutionSection = () => {
   ];
 
   return (
-    <section id="solution" className="py-20 md:py-32 bg-nymara-dark relative overflow-hidden">
+    <section id="solution" className="py-16 md:py-24 bg-nymara-dark relative overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-nymara-darker via-nymara-dark to-nymara-darker opacity-70"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-8 text-center">
           <span className="text-gradient-aqua">Hyper-Porous Roads</span>
         </h2>
         
-        <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16">
+        <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-10 md:mb-16">
           Our revolutionary five-layer system transforms ordinary roads into water management infrastructure that absorbs, filters, and redirects stormwater before it can cause flooding.
         </p>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Road cross-section visualization - Updated to use solid colors */}
-          <div className="lg:w-1/2 relative">
-            <div className="relative h-[500px] md:h-[600px] w-full max-w-xl mx-auto border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-              {/* Water animation */}
-              <div className="absolute inset-0 pointer-events-none">
-                {isVisible && Array.from({ length: 15 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute bg-blue-400/40 rounded-full animate-flow-down"
-                    style={{
-                      width: `${Math.random() * 15 + 5}px`,
-                      height: `${Math.random() * 25 + 10}px`,
-                      left: `${Math.random() * 90 + 5}%`,
-                      top: `-20px`,
-                      animationDelay: `${Math.random() * 5}s`,
-                      animationDuration: `${Math.random() * 5 + 5}s`
-                    }}
-                  ></div>
-                ))}
-              </div>
-              
-              {/* Layers - with heights adjusted for 5 layers */}
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
+          {/* Road cross-section visualization - Using solid colors */}
+          <div className="w-full lg:w-1/2 relative">
+            <div className="relative h-[400px] md:h-[600px] w-full max-w-xl mx-auto border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+              {/* Layers with heights adjusted for 5 layers */}
               {layers.map((layer, index) => {
                 const isActive = index === activeLayer;
                 // Adjust heights for 5 layers
@@ -133,7 +101,7 @@ const SolutionSection = () => {
                 return (
                   <div
                     key={index}
-                    className={`absolute left-0 w-full transition-all duration-700 cursor-pointer ${
+                    className={`absolute left-0 w-full transition-all duration-300 cursor-pointer ${
                       isActive ? "z-10" : "z-0 hover:brightness-110"
                     }`}
                     style={{
@@ -143,26 +111,21 @@ const SolutionSection = () => {
                     }}
                     onClick={() => handleLayerClick(index)}
                   >
-                    {/* Layer visual - simplified with solid color */}
+                    {/* Layer visual with solid color */}
                     <div 
                       className={`h-full w-full relative overflow-hidden ${layer.bgColor}`}
                     >
-                      {/* Water motion effect for active layer */}
-                      {isActive && (
-                        <div className="absolute inset-0 bg-nymara-aqua/10 animate-pulse"></div>
-                      )}
-                      
                       {/* Layer label */}
-                      <div className={`absolute inset-0 flex items-center justify-start p-6 transition-transform duration-500 ${isActive ? '' : 'opacity-70'}`}>
-                        <h3 className="text-white text-xl md:text-2xl lg:text-4xl font-light drop-shadow-lg">
+                      <div className={`absolute inset-0 flex items-center justify-start p-4 md:p-6 transition-transform duration-300 ${isActive ? '' : 'opacity-70'}`}>
+                        <h3 className="text-white text-lg md:text-2xl lg:text-3xl font-light drop-shadow-lg">
                           {layer.name}
-                          {index === 4 && <span className="block text-sm md:text-xl text-gray-200/80">(existing soil)</span>}
+                          {index === 4 && <span className="block text-xs md:text-sm text-gray-200/80">(existing soil)</span>}
                         </h3>
                       </div>
                       
-                      {/* Only ONE circle highlight for active layer */}
+                      {/* Single circle highlight for active layer */}
                       {isActive && (
-                        <div className="absolute right-4 top-4 w-4 h-4 bg-nymara-aqua rounded-full animate-pulse"></div>
+                        <div className="absolute right-4 top-4 w-3 h-3 md:w-4 md:h-4 bg-nymara-aqua rounded-full"></div>
                       )}
                     </div>
                   </div>
@@ -170,13 +133,13 @@ const SolutionSection = () => {
               })}
               
               {/* Layer indicator dots - side navigation */}
-              <div className="absolute right-4 top-0 h-full flex flex-col justify-around items-center z-20">
+              <div className="absolute right-2 md:right-4 top-0 h-full flex flex-col justify-around items-center z-20">
                 {layers.map((_, index) => (
                   <button
                     key={index}
-                    className={`h-3 w-3 rounded-full cursor-pointer transition-all duration-500 ${
+                    className={`h-2 w-2 md:h-3 md:w-3 rounded-full cursor-pointer transition-all duration-300 ${
                       index === activeLayer 
-                      ? "bg-nymara-aqua scale-150" 
+                      ? "bg-nymara-aqua scale-125" 
                       : "bg-white/30 hover:bg-white/50"
                     }`}
                     onClick={() => handleLayerClick(index)}
@@ -184,68 +147,50 @@ const SolutionSection = () => {
                   ></button>
                 ))}
               </div>
-              
-              {/* Water droplets animation at the top - reduced for mobile */}
-              <div className="absolute top-0 left-0 w-full">
-                {isVisible && Array.from({ length: isMobile ? 3 : 5 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute animate-bounce"
-                    style={{
-                      top: `-${Math.random() * 10 + 5}px`,
-                      left: `${Math.random() * 80 + 10}%`,
-                      animationDelay: `${Math.random() * 2}s`,
-                      animationDuration: `${Math.random() * 2 + 1}s`
-                    }}
-                  >
-                    <Droplet className="text-blue-400/70 w-6 h-6" />
-                  </div>
-                ))}
-              </div>
             </div>
             
             {/* Section icon */}
             <div className="absolute -top-4 -left-4 bg-nymara-aqua/20 p-3 rounded-full z-20">
-              <Layers className="text-nymara-aqua w-6 h-6" />
+              <Layers className="text-nymara-aqua w-5 h-5 md:w-6 md:h-6" />
             </div>
           </div>
           
           {/* Layer details */}
-          <div className="lg:w-1/2">
-            <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 md:p-8 transition-all duration-500 ${animating ? 'scale-105' : ''}`}>
-              <h3 className="text-2xl md:text-3xl font-bold text-nymara-aqua mb-3 flex items-center gap-3">
+          <div className="w-full lg:w-1/2">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 md:p-8">
+              <h3 className="text-xl md:text-3xl font-bold text-nymara-aqua mb-3 flex items-center gap-2 md:gap-3">
                 {layers[activeLayer].icon}
                 {layers[activeLayer].name}
               </h3>
               
-              <p className="text-gray-300 mb-8 text-base md:text-lg">
+              <p className="text-gray-300 mb-6 md:mb-8 text-sm md:text-lg">
                 {layers[activeLayer].description}
               </p>
               
               {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-8">
-                <div className="text-center bg-white/5 rounded-lg p-4 transition-all hover:bg-white/10">
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-2">57.82</div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 mt-6 md:mt-8">
+                <div className="text-center bg-white/5 rounded-lg p-3 md:p-4 transition-all hover:bg-white/10">
+                  <div className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2">57.82</div>
                   <p className="text-xs md:text-sm text-nymara-aqua">in/hr absorption</p>
                 </div>
                 
-                <div className="text-center bg-white/5 rounded-lg p-4 transition-all hover:bg-white/10">
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-2">75%</div>
+                <div className="text-center bg-white/5 rounded-lg p-3 md:p-4 transition-all hover:bg-white/10">
+                  <div className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2">75%</div>
                   <p className="text-xs md:text-sm text-nymara-aqua">porosity</p>
                 </div>
                 
-                <div className="text-center bg-white/5 rounded-lg p-4 transition-all hover:bg-white/10">
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-2">$8.03</div>
+                <div className="text-center bg-white/5 rounded-lg p-3 md:p-4 transition-all hover:bg-white/10">
+                  <div className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2">$8.03</div>
                   <p className="text-xs md:text-sm text-nymara-aqua">cost per m²</p>
                 </div>
               </div>
               
               {/* Layer selection buttons - grid for mobile */}
-              <div className="mt-8 grid grid-cols-2 gap-2 md:gap-3 md:grid-cols-3 lg:grid-cols-5">
+              <div className="mt-6 md:mt-8 grid grid-cols-3 gap-2 md:gap-3 lg:grid-cols-5">
                 {layers.map((layer, index) => (
                   <button
                     key={index}
-                    className={`py-2 md:py-3 px-2 md:px-3 rounded-lg text-xs md:text-sm font-medium transition-all flex flex-col items-center justify-center gap-2 ${
+                    className={`py-2 md:py-3 px-1 md:px-3 rounded-lg text-xs md:text-sm font-medium transition-all flex flex-col items-center justify-center gap-1 md:gap-2 ${
                       index === activeLayer
                         ? `bg-gradient-to-r ${layer.color} text-white`
                         : "bg-white/5 text-gray-400 hover:bg-white/10"
@@ -253,16 +198,16 @@ const SolutionSection = () => {
                     onClick={() => handleLayerClick(index)}
                   >
                     {layer.icon}
-                    <span className="text-center">{layer.name.split(' ')[0]}</span>
+                    <span className="text-center truncate w-full">{isMobile ? layer.name.split(' ')[0] : layer.name}</span>
                   </button>
                 ))}
               </div>
               
               {/* CTA */}
-              <div className="mt-8 md:mt-10">
+              <div className="mt-6 md:mt-10">
                 <a 
                   href="#tech-deep-dive" 
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-nymara-aqua to-blue-600 px-4 md:px-6 py-3 rounded-full text-white text-sm md:text-base font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-nymara-aqua to-blue-600 px-4 md:px-6 py-2 md:py-3 rounded-full text-white text-sm md:text-base font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all"
                 >
                   <span>Learn More About Our Technology</span>
                   <Filter className="w-4 h-4 md:w-5 md:h-5" />
