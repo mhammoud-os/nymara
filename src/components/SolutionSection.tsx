@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Layers, Droplet, Filter, FlaskConical } from 'lucide-react';
+import { Layers, Droplet, Filter, FlaskConical, Paintbrush } from 'lucide-react';
 
 const SolutionSection = () => {
   const [activeLayer, setActiveLayer] = useState(0);
@@ -34,7 +34,7 @@ const SolutionSection = () => {
 
     // Auto-cycle through layers when visible
     const interval = setInterval(() => {
-      setActiveLayer((prev) => (prev + 1) % 4);
+      setActiveLayer((prev) => (prev + 1) % 5);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -46,15 +46,21 @@ const SolutionSection = () => {
     setTimeout(() => setAnimating(false), 1000);
   };
 
-  // Updated Layer data with FlaskConical instead of Pipes
+  // Updated Layer data with solid colors and added Nanocoating layer
   const layers = [
+    {
+      name: "Nanocoating",
+      description: "Advanced hydrophobic surface treatment that enhances water repellency while providing protection against wear and environmental damage",
+      color: "from-blue-300 to-blue-400",
+      icon: <Paintbrush className="h-6 w-6" />,
+      bgColor: "bg-blue-400",
+    },
     {
       name: "Porous Concrete",
       description: "High-porosity surface layer that allows rapid water absorption while maintaining durability for traffic loads",
       color: "from-gray-400 to-gray-500",
       icon: <Droplet className="h-6 w-6" />,
-      bgColor: "bg-gray-400",
-      textureUrl: "/lovable-uploads/3f7bf46d-3a08-4926-b447-375af9e82a9a.png"
+      bgColor: "bg-gray-500",
     },
     {
       name: "Subbase Layer",
@@ -62,23 +68,20 @@ const SolutionSection = () => {
       color: "from-amber-400 to-amber-600",
       icon: <Filter className="h-6 w-6" />,
       bgColor: "bg-amber-500",
-      textureUrl: "/lovable-uploads/3f7bf46d-3a08-4926-b447-375af9e82a9a.png"
     },
     {
       name: "Capping Layer",
       description: "Engineered filter layer that removes contaminants through microbial action and adsorption",
       color: "from-amber-200 to-amber-300",
       icon: <Filter className="h-6 w-6" />,
-      bgColor: "bg-amber-300",
-      textureUrl: "/lovable-uploads/3f7bf46d-3a08-4926-b447-375af9e82a9a.png"
+      bgColor: "bg-amber-200",
     },
     {
       name: "Subgrade (Existing Soil)",
       description: "Natural ground that receives filtered water, replenishing groundwater and preventing flooding",
       color: "from-stone-700 to-stone-800",
       icon: <FlaskConical className="h-6 w-6" />,
-      bgColor: "bg-stone-800",
-      textureUrl: "/lovable-uploads/3f7bf46d-3a08-4926-b447-375af9e82a9a.png"
+      bgColor: "bg-stone-700",
     }
   ];
 
@@ -93,11 +96,11 @@ const SolutionSection = () => {
         </h2>
         
         <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16">
-          Our revolutionary four-layer system transforms ordinary roads into water management infrastructure that absorbs, filters, and redirects stormwater before it can cause flooding.
+          Our revolutionary five-layer system transforms ordinary roads into water management infrastructure that absorbs, filters, and redirects stormwater before it can cause flooding.
         </p>
 
         <div className="flex flex-col lg:flex-row gap-12 items-center">
-          {/* Road cross-section visualization - Updated to match the image */}
+          {/* Road cross-section visualization - Updated to use solid colors */}
           <div className="lg:w-1/2 relative">
             <div className="relative h-[600px] w-full max-w-xl mx-auto border border-white/10 rounded-xl overflow-hidden shadow-2xl">
               {/* Water animation */}
@@ -118,12 +121,12 @@ const SolutionSection = () => {
                 ))}
               </div>
               
-              {/* Layers */}
+              {/* Layers - with heights adjusted for 5 layers */}
               {layers.map((layer, index) => {
                 const isActive = index === activeLayer;
-                // Adjust heights to match proportions in the image
-                const heights = ["25%", "25%", "25%", "25%"];
-                const topPositions = ["0%", "25%", "50%", "75%"];
+                // Adjust heights for 5 layers
+                const heights = ["10%", "20%", "25%", "20%", "25%"];
+                const topPositions = ["0%", "10%", "30%", "55%", "75%"];
                 
                 return (
                   <div
@@ -138,33 +141,10 @@ const SolutionSection = () => {
                     }}
                     onClick={() => handleLayerClick(index)}
                   >
-                    {/* Layer visual */}
+                    {/* Layer visual - simplified with solid color */}
                     <div 
                       className={`h-full w-full relative overflow-hidden ${layer.bgColor}`}
-                      style={{
-                        backgroundImage: `url(${layer.textureUrl})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: index === 0 ? 'top' : index === 3 ? 'bottom' : 'center',
-                        backgroundBlendMode: 'overlay'
-                      }}
                     >
-                      {/* Add texture pattern with circles */}
-                      <div className="absolute inset-0 flex items-center">
-                        {Array.from({ length: 50 }).map((_, i) => (
-                          <div
-                            key={i}
-                            className="absolute rounded-full bg-white/10"
-                            style={{
-                              width: `${Math.random() * 30 + 10}px`,
-                              height: `${Math.random() * 30 + 10}px`,
-                              left: `${Math.random() * 100}%`,
-                              top: `${Math.random() * 100}%`,
-                              opacity: Math.random() * 0.3 + 0.1
-                            }}
-                          ></div>
-                        ))}
-                      </div>
-                      
                       {/* Water motion effect for active layer */}
                       {isActive && (
                         <div className="absolute inset-0 bg-nymara-aqua/10 animate-pulse"></div>
@@ -174,7 +154,7 @@ const SolutionSection = () => {
                       <div className={`absolute inset-0 flex items-center justify-start p-6 transition-transform duration-500 ${isActive ? '' : 'opacity-70'}`}>
                         <h3 className="text-white text-2xl md:text-4xl font-light drop-shadow-lg">
                           {layer.name}
-                          {index === 3 && <span className="block text-xl text-gray-200/80">(existing soil)</span>}
+                          {index === 4 && <span className="block text-xl text-gray-200/80">(existing soil)</span>}
                         </h3>
                       </div>
                       
@@ -259,7 +239,7 @@ const SolutionSection = () => {
               </div>
               
               {/* Layer selection buttons */}
-              <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
+              <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
                 {layers.map((layer, index) => (
                   <button
                     key={index}
