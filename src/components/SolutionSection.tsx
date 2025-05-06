@@ -1,34 +1,11 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Layers, Droplet, Filter, FlaskConical, Paintbrush } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
 
 const SolutionSection = () => {
   const [activeLayer, setActiveLayer] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    const section = document.getElementById('solution');
-    if (section) {
-      observer.observe(section);
-    }
-
-    return () => {
-      if (section) {
-        observer.unobserve(section);
-      }
-    };
-  }, []);
 
   const handleLayerClick = (index) => {
     setActiveLayer(index);
@@ -38,38 +15,63 @@ const SolutionSection = () => {
   const layers = [
     {
       name: "Nanocoating",
-      description: "Advanced hydrophobic surface treatment that enhances water repellency while providing protection against wear and environmental damage",
+      description: "SiO₂-based nano coating that acts as a selective filter—permitting water to pass while blocking debris and particulates >100 µm, maintaining long-term permeability",
       color: "from-blue-300 to-blue-400",
       icon: <Paintbrush className="h-6 w-6" />,
       bgColor: "bg-blue-400",
+      stats: [
+        { value: "75%", label: "porosity" },
+        { value: "$5.00", label: "cost per m²" },
+        { value: "10-15", label: "years durability" }
+      ]
     },
     {
       name: "Porous Concrete",
-      description: "High-porosity surface layer that allows rapid water absorption while maintaining durability for traffic loads",
+      description: "Specialized pervious concrete with 20% porosity, allowing rapid water absorption while maintaining 3500 psi compressive strength for traffic loads",
       color: "from-gray-400 to-gray-500",
       icon: <Droplet className="h-6 w-6" />,
       bgColor: "bg-gray-500",
+      stats: [
+        { value: "57.82", label: "in/hr absorption" },
+        { value: "$8.03", label: "cost per m²" },
+        { value: "20%", label: "porosity" }
+      ]
     },
     {
-      name: "Subbase Layer",
-      description: "Aggregate material that provides structural support while allowing water to filter through",
+      name: "Aggregate Layer",
+      description: "Storage layer designed to hold large volumes of water, with 40% porosity and 4-6 inches thickness",
       color: "from-amber-400 to-amber-600",
       icon: <Filter className="h-6 w-6" />,
       bgColor: "bg-amber-500",
+      stats: [
+        { value: "40%", label: "porosity" },
+        { value: "4-6\"", label: "thickness" },
+        { value: "182.88", label: "L/m² capacity" }
+      ]
     },
     {
-      name: "Capping Layer",
-      description: "Engineered filter layer that removes contaminants through microbial action and adsorption",
+      name: "Drainage Base",
+      description: "Stable and slowly permeable layer that temporarily stores stormwater and disperses it over time, with 30% porosity and 10-16 inches thickness",
       color: "from-amber-200 to-amber-300",
       icon: <Filter className="h-6 w-6" />,
       bgColor: "bg-amber-200",
+      stats: [
+        { value: "30%", label: "porosity" },
+        { value: "10-16\"", label: "thickness" },
+        { value: "8 in/hr", label: "rain capacity" }
+      ]
     },
     {
-      name: "Subgrade (Existing Soil)",
+      name: "Subgrade",
       description: "Natural ground that receives filtered water, replenishing groundwater and preventing flooding",
       color: "from-stone-700 to-stone-800",
       icon: <FlaskConical className="h-6 w-6" />,
       bgColor: "bg-stone-700",
+      stats: [
+        { value: "90%", label: "first-hour absorption" },
+        { value: "≈0", label: "contaminants" },
+        { value: "Existing", label: "soil" }
+      ]
     }
   ];
 
@@ -90,7 +92,7 @@ const SolutionSection = () => {
         <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-center">
           {/* Road cross-section visualization - Using solid colors */}
           <div className="w-full lg:w-1/2 relative">
-            <div className="relative h-[400px] md:h-[600px] w-full max-w-xl mx-auto border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+            <div className="relative h-[300px] md:h-[600px] w-full max-w-xl mx-auto border border-white/10 rounded-xl overflow-hidden shadow-2xl">
               {/* Layers with heights adjusted for 5 layers */}
               {layers.map((layer, index) => {
                 const isActive = index === activeLayer;
@@ -168,21 +170,13 @@ const SolutionSection = () => {
               </p>
               
               {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6 mt-6 md:mt-8">
-                <div className="text-center bg-white/5 rounded-lg p-3 md:p-4 transition-all hover:bg-white/10">
-                  <div className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2">57.82</div>
-                  <p className="text-xs md:text-sm text-nymara-aqua">in/hr absorption</p>
-                </div>
-                
-                <div className="text-center bg-white/5 rounded-lg p-3 md:p-4 transition-all hover:bg-white/10">
-                  <div className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2">75%</div>
-                  <p className="text-xs md:text-sm text-nymara-aqua">porosity</p>
-                </div>
-                
-                <div className="text-center bg-white/5 rounded-lg p-3 md:p-4 transition-all hover:bg-white/10">
-                  <div className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2">$8.03</div>
-                  <p className="text-xs md:text-sm text-nymara-aqua">cost per m²</p>
-                </div>
+              <div className="grid grid-cols-3 gap-3 md:gap-6 mt-6 md:mt-8">
+                {layers[activeLayer].stats.map((stat, index) => (
+                  <div key={index} className="text-center bg-white/5 rounded-lg p-3 md:p-4 transition-all hover:bg-white/10">
+                    <div className="text-xl md:text-3xl font-bold text-white mb-1 md:mb-2">{stat.value}</div>
+                    <p className="text-xs md:text-sm text-nymara-aqua">{stat.label}</p>
+                  </div>
+                ))}
               </div>
               
               {/* Layer selection buttons - grid for mobile */}
@@ -203,13 +197,20 @@ const SolutionSection = () => {
                 ))}
               </div>
               
+              {/* Total Cost */}
+              <div className="mt-6 md:mt-10 bg-white/10 rounded-xl p-4 text-center">
+                <p className="text-sm text-gray-400">Total System Cost</p>
+                <p className="text-2xl md:text-3xl font-bold text-white">$13.00 <span className="text-sm text-gray-400">per m²</span></p>
+                <p className="text-xs md:text-sm text-nymara-aqua mt-1">50x more water absorption than traditional pavement</p>
+              </div>
+              
               {/* CTA */}
               <div className="mt-6 md:mt-10">
                 <a 
-                  href="#tech-deep-dive" 
+                  href="#tech" 
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-nymara-aqua to-blue-600 px-4 md:px-6 py-2 md:py-3 rounded-full text-white text-sm md:text-base font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all"
                 >
-                  <span>Learn More About Our Technology</span>
+                  <span>Learn About Our Technology</span>
                   <Filter className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               </div>

@@ -136,33 +136,33 @@ const ChallengeSection = () => {
             
             <div className="space-y-6 text-gray-300">
               <p className="text-xl">
-                The world's cities are drowning. Climate change is increasing both the frequency and intensity of urban flooding, with devastating consequences for infrastructure, economies, and human lives.
+                As of 2015, over 16% of the world's urban areas—105,657 km²—lie within high-risk flood zones, with climate change intensifying both the frequency and destructive power of urban flooding events.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">$129 Billion</h3>
-                  <p className="text-sm text-gray-400">Annual damage from flooding worldwide, projected to reach $1 trillion by 2050</p>
+                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">4.25 Billion</h3>
+                  <p className="text-sm text-gray-400">Urban residents worldwide, projected to reach 6.52 billion by 2050, putting more people at flood risk</p>
                 </div>
                 
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">1.81 Billion</h3>
-                  <p className="text-sm text-gray-400">People directly affected by urban flooding risks, with 40% in developing nations</p>
+                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">2.5%</h3>
+                  <p className="text-sm text-gray-400">Annual increase in urban land development within flood-prone areas (1985-2015)</p>
                 </div>
                 
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">+24%</h3>
-                  <p className="text-sm text-gray-400">Increase in extreme precipitation events in urban areas since 2000</p>
+                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">22.7%</h3>
+                  <p className="text-sm text-gray-400">Of Asia's urban development sits in high-risk flood zones—the highest of any continent</p>
                 </div>
                 
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">7.2 Million</h3>
-                  <p className="text-sm text-gray-400">Housing units in the US alone sit in 100-year flood zones</p>
+                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">8.9%</h3>
+                  <p className="text-sm text-gray-400">Annual increase in Asian urban areas within flood zones, showing accelerating vulnerability</p>
                 </div>
               </div>
               
               <p className="text-lg mt-8">
-                Traditional infrastructure was never designed for these new realities. Storm drains overflow, sewers back up, and concrete surfaces create dangerous runoff. Cities need solutions that don't just redirect water—they need to absorb it.
+                The consequences ripple far beyond water damage. Floods displace families, cripple economies, and devastate food systems. Cities need infrastructure that doesn't just resist floods—but works with water from the ground up.
               </p>
             </div>
           </div>

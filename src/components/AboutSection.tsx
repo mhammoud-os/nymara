@@ -41,20 +41,52 @@ const AboutSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-8">
-            <span className="text-gradient-aqua">Who We Are</span>
+            <span className="text-gradient-aqua">Our Mission</span>
           </h2>
           
           <p className="text-xl text-gray-300 mb-8">
-            Nymara was born at the intersection of crisis and opportunity. We're not just building better roads—we're turning city streets into living sponges that protect billions of lives and rewrite the future of climate resilience.
+            Nymara empowers cities to combat urban flooding by transforming roads into intelligent, water-absorbing infrastructure through advanced nanotechnology. Our AI-driven platform ensures targeted deployment for maximum impact and cost-efficiency.
           </p>
           
           <p className="text-xl text-gray-300">
-            Our team combines expertise in nanotechnology, civil engineering, hydrology, and AI to create infrastructure that works <i>with</i> nature, not against it. We believe the road beneath your feet shouldn't just connect places—it should protect them.
+            By combining data and scalable partnerships, we build climate-adaptive cities that thrive in the face of rising storms. We're not just building better roads—we're turning city streets into living sponges that protect billions of lives and rewrite the future of climate resilience.
           </p>
+          
+          <div className="mt-16 p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
+            <h3 className="text-2xl font-bold text-nymara-aqua mb-4">Pathways Forward</h3>
+            <p className="text-gray-300 mb-4">
+              The path to scaling hyper-porous roads involves launching pilot projects in high-risk areas, developing global partnerships, and introducing financial incentives to lower adoption barriers.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div className="bg-white/5 rounded-lg p-5 text-left">
+                <h4 className="text-lg font-medium text-white mb-3">Rural Resilience Networks</h4>
+                <p className="text-sm text-gray-400">
+                  Adapting our technologies to support decentralized water management in agricultural regions, protecting crops and transportation routes.
+                </p>
+              </div>
+              <div className="bg-white/5 rounded-lg p-5 text-left">
+                <h4 className="text-lg font-medium text-white mb-3">Circular Materials Strategy</h4>
+                <p className="text-sm text-gray-400">
+                  Pioneering a closed-loop production model that repurposes local waste into the fabrication of our porous surfaces.
+                </p>
+              </div>
+              <div className="bg-white/5 rounded-lg p-5 text-left">
+                <h4 className="text-lg font-medium text-white mb-3">Community-Centered Design</h4>
+                <p className="text-sm text-gray-400">
+                  Engaging residents in the co-creation of public spaces built with our materials, ensuring solutions reflect community identities.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
         
         {/* Team Members */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+        <h3 className="text-2xl md:text-3xl font-bold mb-10 text-center">
+          <span className="text-white">The Team Behind </span>
+          <span className="text-gradient-aqua">Nymara</span>
+        </h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mt-10">
           {teamMembers.map((member, index) => (
             <div 
               key={index} 
