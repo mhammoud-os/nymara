@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // Team members data
@@ -36,26 +35,34 @@ const AboutSection = () => {
     <section id="about" className="py-20 md:py-32 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-nymara-aqua/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-nymara-orange/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-nymara-aqua/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">
+          <h2 className="text-4xl md:text-5xl font-medium mb-8">
             <span className="text-gradient-aqua">Our Mission</span>
           </h2>
           
-          <p className="text-xl text-gray-300 mb-8">
-            Nymara empowers cities to combat urban flooding by transforming roads into intelligent, water-absorbing infrastructure through advanced nanotechnology. Our AI-driven platform ensures targeted deployment for maximum impact and cost-efficiency.
+          <p className="text-lg md:text-xl text-gray-300 mb-8">
+            Nymara empowers cities to combat urban flooding by transforming<br />
+            roads into intelligent, water-absorbing infrastructure through<br />
+            advanced nanotechnology. Our AI-driven platform ensures targeted<br />
+            deployment for maximum impact and cost-efficiency.
           </p>
           
-          <p className="text-xl text-gray-300">
-            By combining data and scalable partnerships, we build climate-adaptive cities that thrive in the face of rising storms. We're not just building better roads—we're turning city streets into living sponges that protect billions of lives and rewrite the future of climate resilience.
+          <p className="text-lg md:text-xl text-gray-300">
+            By combining data and scalable partnerships, we build climate-adaptive<br />
+            cities that thrive in the face of rising storms. We're not just building<br />
+            better roads—we're turning city streets into living sponges that protect<br />
+            billions of lives and rewrite the future of climate resilience.
           </p>
           
           <div className="mt-16 p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
-            <h3 className="text-2xl font-bold text-nymara-aqua mb-4">Pathways Forward</h3>
+            <h3 className="text-2xl font-medium text-nymara-aqua mb-4">Pathways Forward</h3>
             <p className="text-gray-300 mb-4">
-              The path to scaling hyper-porous roads involves launching pilot projects in high-risk areas, developing global partnerships, and introducing financial incentives to lower adoption barriers.
+              The path to scaling hyper-porous roads involves launching pilot projects<br />
+              in high-risk areas, developing global partnerships, and introducing<br />
+              financial incentives to lower adoption barriers.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <div className="bg-white/5 rounded-lg p-5 text-left">
@@ -81,7 +88,7 @@ const AboutSection = () => {
         </div>
         
         {/* Team Members */}
-        <h3 className="text-2xl md:text-3xl font-bold mb-10 text-center">
+        <h3 className="text-3xl md:text-4xl font-medium mb-10 text-center">
           <span className="text-white">The Team Behind </span>
           <span className="text-gradient-aqua">Nymara</span>
         </h3>
@@ -100,7 +107,7 @@ const AboutSection = () => {
                 />
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
+              <h3 className="text-xl font-medium text-white mb-1">{member.name}</h3>
               <p className="text-nymara-aqua">{member.title}</p>
               
               {/* Glowing effect on hover */}
@@ -114,3 +121,4 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+

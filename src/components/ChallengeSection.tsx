@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Globe } from 'lucide-react';
+import { Globe, Droplets } from 'lucide-react';
 
 const ChallengeSection = () => {
   const globeRef = useRef<HTMLDivElement>(null);
@@ -96,74 +96,87 @@ const ChallengeSection = () => {
       {/* Background accents */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-nymara-dark to-transparent"></div>
       
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Globe visualization */}
-          <div className="lg:w-1/2 mb-12 lg:mb-0 relative">
-            <div className="relative aspect-square max-w-xl mx-auto">
-              {/* Globe base */}
-              <div className="absolute inset-0 rounded-full border border-nymara-aqua/30 animate-rotate-globe"></div>
-              <div className="absolute inset-2 rounded-full border border-nymara-aqua/20 animate-rotate-globe" style={{ animationDuration: '80s' }}></div>
-              <div className="absolute inset-4 rounded-full border border-nymara-aqua/10 animate-rotate-globe" style={{ animationDuration: '120s' }}></div>
-              
-              {/* Globe surface */}
-              <div 
-                ref={globeRef}
-                className="absolute inset-8 rounded-full bg-gradient-to-br from-blue-900/40 to-blue-500/20 border border-nymara-aqua/30 overflow-hidden"
-              >
-                {/* Land masses (simplified) */}
-                <div className="absolute w-[20%] h-[15%] bg-gray-800/40 rounded-full top-[30%] left-[25%]"></div>
-                <div className="absolute w-[35%] h-[25%] bg-gray-800/40 rounded-full top-[20%] left-[55%]"></div>
-                <div className="absolute w-[15%] h-[20%] bg-gray-800/40 rounded-full top-[60%] left-[30%]"></div>
-                <div className="absolute w-[25%] h-[15%] bg-gray-800/40 rounded-full top-[65%] left-[55%]"></div>
+      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Globe visualization - Made this a more appropriate size */}
+            <div className="lg:w-2/5 mb-12 lg:mb-0 relative">
+              <div className="relative aspect-square max-w-md mx-auto">
+                {/* Globe base */}
+                <div className="absolute inset-0 rounded-full border border-nymara-aqua/30 animate-rotate-globe"></div>
+                <div className="absolute inset-2 rounded-full border border-nymara-aqua/20 animate-rotate-globe" style={{ animationDuration: '80s' }}></div>
+                <div className="absolute inset-4 rounded-full border border-nymara-aqua/10 animate-rotate-globe" style={{ animationDuration: '120s' }}></div>
                 
-                {/* Flood markers added by JS */}
-              </div>
-              
-              {/* Globe icon */}
-              <div className="absolute top-4 right-4 bg-nymara-aqua/20 p-2 rounded-full">
-                <Globe className="text-nymara-aqua w-6 h-6" />
+                {/* Globe surface */}
+                <div 
+                  ref={globeRef}
+                  className="absolute inset-8 rounded-full bg-gradient-to-br from-blue-900/40 to-blue-500/20 border border-nymara-aqua/30 overflow-hidden"
+                >
+                  {/* Land masses (simplified) */}
+                  <div className="absolute w-[20%] h-[15%] bg-gray-800/40 rounded-full top-[30%] left-[25%]"></div>
+                  <div className="absolute w-[35%] h-[25%] bg-gray-800/40 rounded-full top-[20%] left-[55%]"></div>
+                  <div className="absolute w-[15%] h-[20%] bg-gray-800/40 rounded-full top-[60%] left-[30%]"></div>
+                  <div className="absolute w-[25%] h-[15%] bg-gray-800/40 rounded-full top-[65%] left-[55%]"></div>
+                  
+                  {/* Flood markers added by JS */}
+                </div>
+                
+                {/* Flooding indicators - Added to make the graphic more meaningful */}
+                <div className="absolute bottom-2 right-2 flex items-center gap-2 bg-nymara-darker/80 py-2 px-3 rounded-full backdrop-blur-sm">
+                  <Droplets className="text-nymara-aqua w-4 h-4" />
+                  <span className="text-xs text-gray-300">High-risk flood zones</span>
+                </div>
+                
+                {/* Globe icon */}
+                <div className="absolute top-4 right-4 bg-nymara-aqua/20 p-2 rounded-full">
+                  <Globe className="text-nymara-aqua w-6 h-6" />
+                </div>
               </div>
             </div>
-          </div>
-          
-          {/* Content */}
-          <div className="lg:w-1/2">
-            <h2 className="text-3xl md:text-5xl font-bold mb-8">
-              <span className="text-white">A Planet</span>
-              <span className="text-gradient-orange ml-2">Out of Balance</span>
-            </h2>
             
-            <div className="space-y-6 text-gray-300">
-              <p className="text-xl">
-                As of 2015, over 16% of the world's urban areas—105,657 km²—lie within high-risk flood zones, with climate change intensifying both the frequency and destructive power of urban flooding events.
-              </p>
+            {/* Content - Expanded to use more space */}
+            <div className="lg:w-3/5 pl-0 lg:pl-6 pr-0 lg:pr-6">
+              <h2 className="text-4xl md:text-5xl font-medium mb-8">
+                <span className="text-white">A Planet</span>
+                <span className="text-gradient-blue ml-2">Out of Balance</span>
+              </h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">4.25 Billion</h3>
-                  <p className="text-sm text-gray-400">Urban residents worldwide, projected to reach 6.52 billion by 2050, putting more people at flood risk</p>
+              <div className="space-y-6 text-gray-300">
+                <p className="text-lg md:text-xl text-gray-300">
+                  As of 2015, over 16% of the world's urban areas—105,657 km²—<br />
+                  lie within high-risk flood zones, with climate change intensifying<br />
+                  both the frequency and destructive power of urban flooding events.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                    <h3 className="text-2xl md:text-3xl font-medium text-nymara-aqua mb-3">4.25 Billion</h3>
+                    <p className="text-sm md:text-base text-gray-400">Urban residents worldwide, projected to reach 6.52 billion by 2050, putting more people at flood risk</p>
+                  </div>
+                  
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                    <h3 className="text-2xl md:text-3xl font-medium text-nymara-aqua mb-3">2.5%</h3>
+                    <p className="text-sm md:text-base text-gray-400">Annual increase in urban land development within flood-prone areas (1985-2015)</p>
+                  </div>
+                  
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                    <h3 className="text-2xl md:text-3xl font-medium text-nymara-aqua mb-3">22.7%</h3>
+                    <p className="text-sm md:text-base text-gray-400">Of Asia's urban development sits in high-risk flood zones—the highest of any continent</p>
+                  </div>
+                  
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                    <h3 className="text-2xl md:text-3xl font-medium text-nymara-aqua mb-3">8.9%</h3>
+                    <p className="text-sm md:text-base text-gray-400">Annual increase in Asian urban areas within flood zones, showing accelerating vulnerability</p>
+                  </div>
                 </div>
                 
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">2.5%</h3>
-                  <p className="text-sm text-gray-400">Annual increase in urban land development within flood-prone areas (1985-2015)</p>
-                </div>
-                
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">22.7%</h3>
-                  <p className="text-sm text-gray-400">Of Asia's urban development sits in high-risk flood zones—the highest of any continent</p>
-                </div>
-                
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                  <h3 className="text-2xl font-bold text-nymara-aqua mb-3">8.9%</h3>
-                  <p className="text-sm text-gray-400">Annual increase in Asian urban areas within flood zones, showing accelerating vulnerability</p>
-                </div>
+                <p className="text-lg mt-8">
+                  The consequences ripple far beyond water damage.<br />
+                  Floods displace families, cripple economies, and devastate food systems.<br />
+                  Cities need infrastructure that doesn't just resist floods—but<br />
+                  works with water from the ground up.
+                </p>
               </div>
-              
-              <p className="text-lg mt-8">
-                The consequences ripple far beyond water damage. Floods displace families, cripple economies, and devastate food systems. Cities need infrastructure that doesn't just resist floods—but works with water from the ground up.
-              </p>
             </div>
           </div>
         </div>
@@ -173,3 +186,4 @@ const ChallengeSection = () => {
 };
 
 export default ChallengeSection;
+

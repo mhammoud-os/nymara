@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail, Phone, Facebook, Linkedin, Instagram } from 'lucide-react';
 
@@ -84,7 +83,7 @@ const Footer = () => {
           
           {/* Right column */}
           <div className="lg:w-2/3">
-            <h3 className="text-2xl font-bold text-white mb-6">Let's Build Resilience</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Let's Build Resilience</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -148,9 +147,9 @@ const Footer = () => {
         </div>
         
         <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-gray-500 text-sm mb-4 md:mb-0">
+          <p className="text-sm md:text-base text-gray-500 text-center">
             © {new Date().getFullYear()} Nymara, Inc. All rights reserved.
-          </div>
+          </p>
           
           <div className="flex gap-6">
             <a href="#" className="text-gray-400 text-sm hover:text-nymara-aqua transition-colors">Privacy Policy</a>

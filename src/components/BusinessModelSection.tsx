@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Handshake, ChartBar } from 'lucide-react';
 
@@ -43,48 +42,52 @@ const BusinessModelSection = () => {
       <div className="absolute top-0 right-0 w-full h-32 bg-gradient-to-b from-nymara-dark to-transparent"></div>
       
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center">
-          <span className="text-gradient-orange">Scale with Materials + Platform</span>
+        <h2 className="text-4xl md:text-5xl font-medium mb-8 text-center">
+          <span className="text-gradient-blue">Scale with Materials + Platform</span>
         </h2>
         
-        <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16">
-          Nymara's dual revenue model combines materials licensing and a software platform to offer complete flood management solutions to cities worldwide.
+        <p className="text-lg md:text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16">
+          Nymara's dual revenue model combines materials licensing<br />
+          and a software platform to offer complete flood management<br />
+          solutions to cities worldwide.
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left side: Business Models */}
           <div className="space-y-8">
             {/* Licensing Model */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 relative overflow-hidden group hover:border-nymara-orange/50 transition-colors">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-nymara-orange/10 rounded-full blur-2xl group-hover:bg-nymara-orange/20 transition-colors"></div>
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 relative overflow-hidden group hover:border-nymara-aqua/50 transition-colors">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-nymara-aqua/10 rounded-full blur-2xl group-hover:bg-nymara-aqua/20 transition-colors"></div>
               
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-nymara-orange/20 flex items-center justify-center">
-                  <Handshake className="w-6 h-6 text-nymara-orange" />
+                <div className="w-12 h-12 rounded-full bg-nymara-aqua/20 flex items-center justify-center">
+                  <Handshake className="w-6 h-6 text-nymara-aqua" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Licensing Model</h3>
+                <h3 className="text-2xl font-medium text-white">Licensing Model</h3>
               </div>
               
               <p className="text-gray-300 mb-6">
-                We partner with global chemical and construction material companies to license our hyper-porous road technology at scale. This allows rapid deployment while maintaining quality control.
+                We partner with global chemical and construction material<br />
+                companies to license our hyper-porous road technology at scale.<br />
+                This allows rapid deployment while maintaining quality control.
               </p>
               
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-nymara-orange/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-nymara-orange text-xs">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-nymara-aqua text-xs">✓</span>
                   </span>
                   <span className="text-gray-300 text-sm">One-contract deployment across multiple markets</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-nymara-orange/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-nymara-orange text-xs">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-nymara-aqua text-xs">✓</span>
                   </span>
                   <span className="text-gray-300 text-sm">8-12% licensing fee on all installed materials</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="w-5 h-5 rounded-full bg-nymara-orange/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-nymara-orange text-xs">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-nymara-aqua text-xs">✓</span>
                   </span>
                   <span className="text-gray-300 text-sm">Co-branding opportunities with leading infrastructure companies</span>
                 </li>
@@ -96,7 +99,7 @@ const BusinessModelSection = () => {
           
           {/* Right side: City Comparison */}
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-8 relative overflow-hidden">
-            <h3 className="text-2xl font-bold text-white mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
               City Comparison: <span className="text-nymara-aqua">{currentCity.name}</span>
             </h3>
             
@@ -121,7 +124,7 @@ const BusinessModelSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">
                 <div className="text-sm text-gray-400">Licensing Revenue Potential</div>
-                <div className="text-2xl font-bold text-nymara-orange mt-1">{currentCity.licensingRevenue}</div>
+                <div className="text-2xl font-bold text-nymara-aqua mt-1">{currentCity.licensingRevenue}</div>
               </div>
               
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">
@@ -131,7 +134,7 @@ const BusinessModelSection = () => {
               
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">
                 <div className="text-sm text-gray-400">Annual Cost Savings</div>
-                <div className="text-2xl font-bold text-green-400 mt-1">{currentCity.costSavings}</div>
+                <div className="text-2xl font-bold text-nymara-aqua mt-1">{currentCity.costSavings}</div>
               </div>
               
               <div className="bg-white/5 border border-white/10 rounded-lg p-4">

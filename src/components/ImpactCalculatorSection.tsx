@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Calculator } from 'lucide-react';
 
@@ -61,15 +60,16 @@ const ImpactCalculatorSection = () => {
       <div className="absolute inset-0 grid-pattern opacity-10"></div>
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-nymara-darker to-transparent"></div>
       <div className="absolute top-1/4 left-0 w-96 h-96 rounded-full bg-nymara-aqua/5 blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-nymara-orange/5 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-nymara-blue/5 blur-3xl"></div>
       
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center">
-          <span className="text-gradient-aqua">See Your City in Action</span>
+        <h2 className="text-4xl md:text-5xl font-medium mb-8 text-center">
+          <span className="text-gradient-blue">See Your City in Action</span>
         </h2>
         
-        <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16">
-          Use our impact calculator to see how Nymara's hyper-porous road technology would transform flood management in your city.
+        <p className="text-lg md:text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16">
+          Use our impact calculator to see how Nymara's hyper-porous<br />
+          road technology would transform flood management in your city.
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -79,7 +79,7 @@ const ImpactCalculatorSection = () => {
               <div className="w-12 h-12 rounded-full bg-nymara-aqua/20 flex items-center justify-center">
                 <Calculator className="w-6 h-6 text-nymara-aqua" />
               </div>
-              <h3 className="text-2xl font-bold text-white">Impact Calculator</h3>
+              <h3 className="text-2xl font-medium text-white">Impact Calculator</h3>
             </div>
             
             <div className="space-y-8">
@@ -173,7 +173,7 @@ const ImpactCalculatorSection = () => {
             </div>
             
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-8 relative z-10">
-              <h3 className="text-2xl font-bold text-white mb-8">Impact Results</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Impact Results</h3>
               
               <div className="space-y-6">
                 {/* Cost */}
