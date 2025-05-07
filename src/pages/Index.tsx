@@ -9,6 +9,7 @@ import TechDeepDiveSection from '../components/TechDeepDiveSection';
 import BusinessModelSection from '../components/BusinessModelSection';
 import ImpactCalculatorSection from '../components/ImpactCalculatorSection';
 import InvestPartnerSection from '../components/InvestPartnerSection';
+import TeamSection from '../components/TeamSection';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -36,6 +37,7 @@ const Index = () => {
         <BusinessModelSection />
         <ImpactCalculatorSection />
         <InvestPartnerSection />
+        <TeamSection />
         <Footer />
       </div>
     </div>
