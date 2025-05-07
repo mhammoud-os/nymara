@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Atom, Database, FlaskConical, Filter } from 'lucide-react';
 
@@ -54,7 +53,7 @@ const TechDeepDiveSection = () => {
               <div>
                 <h4 className="text-white font-medium mb-1">Hierarchical Pore Structure</h4>
                 <p className="text-gray-400 text-sm">
-                  Multi-scale porosity from nano to meso scale enabling up to 75% porosity while filtering particles >100 µm
+                  Multi-scale porosity from nano to meso scale enabling up to 75% porosity while filtering particles &gt;100 µm
                   <span className="text-xs text-nymara-aqua cursor-help ml-1" title="Source: Nymara Labs, Patent Pending">
                     [patent pending]
                   </span>
