@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 // Team members data
@@ -27,7 +28,6 @@ const teamMembers = [
     title: "Urban Water Systems Specialist",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
   },
-
 ];
 
 const AboutSection = () => {
@@ -87,33 +87,35 @@ const AboutSection = () => {
           </div>
         </div>
         
-        {/* Team Members */}
-        <h3 className="text-3xl md:text-4xl font-medium mb-10 text-center">
-          <span className="text-white">The Team Behind </span>
-          <span className="text-gradient-aqua">Nymara</span>
-        </h3>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mt-10">
-          {teamMembers.map((member, index) => (
-            <div 
-              key={index} 
-              className="group relative glass-morphism rounded-xl p-6 flex flex-col items-center text-center hover:border-nymara-aqua/50 transition-all duration-300 hover:-translate-y-2"
-            >
-              <div className="w-32 h-32 mb-6 rounded-full overflow-hidden border-2 border-nymara-aqua/30 group-hover:border-nymara-aqua transition-all duration-300">
-                <img 
-                  src={member.image} 
-                  alt={member.name} 
-                  className="w-full h-full object-cover"
-                />
+        {/* Team Members moved to bottom */}
+        <div className="mt-24">
+          <h3 className="text-3xl md:text-4xl font-medium mb-10 text-center">
+            <span className="text-white">The Team Behind </span>
+            <span className="text-gradient-aqua">Nymara</span>
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mt-10">
+            {teamMembers.map((member, index) => (
+              <div 
+                key={index} 
+                className="group relative glass-morphism rounded-xl p-6 flex flex-col items-center text-center hover:border-nymara-aqua/50 transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="w-32 h-32 mb-6 rounded-full overflow-hidden border-2 border-nymara-aqua/30 group-hover:border-nymara-aqua transition-all duration-300">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                <h3 className="text-xl font-medium text-white mb-1">{member.name}</h3>
+                <p className="text-nymara-aqua">{member.title}</p>
+                
+                {/* Glowing effect on hover */}
+                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-gradient-to-r from-nymara-aqua/5 to-transparent blur transition-opacity duration-300 -z-10"></div>
               </div>
-              
-              <h3 className="text-xl font-medium text-white mb-1">{member.name}</h3>
-              <p className="text-nymara-aqua">{member.title}</p>
-              
-              {/* Glowing effect on hover */}
-              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-gradient-to-r from-nymara-aqua/5 to-transparent blur transition-opacity duration-300 -z-10"></div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -121,4 +123,3 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
-

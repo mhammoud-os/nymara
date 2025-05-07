@@ -3,23 +3,24 @@ import React from 'react';
 import { Users, CircleArrowRight } from 'lucide-react';
 
 const InvestPartnerSection = () => {
+  // Empty testimonials with placeholder structure
   const testimonials = [
     {
-      quote: "Nymara's technology reduced downtown flooding by 62% during last year's monsoon season. The ROI was evident within months.",
-      author: "Priya Singh",
-      title: "Urban Planning Director, Mumbai",
+      quote: "",
+      author: "",
+      title: "",
       image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
     },
     {
-      quote: "Their hyper-porous roads absorb rainfall that would have overwhelmed our drainage system. It's prevention, not reaction.",
-      author: "Marcus Chen",
-      title: "City Engineer, Jakarta",
+      quote: "",
+      author: "",
+      title: "",
       image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
     },
     {
-      quote: "Our materials partnership with Nymara has opened entirely new markets in climate adaptation infrastructure.",
-      author: "Sarah Rodriguez",
-      title: "Innovation Lead, GeoTech Materials",
+      quote: "",
+      author: "",
+      title: "",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
     }
   ];
@@ -120,7 +121,7 @@ const InvestPartnerSection = () => {
           </div>
         </div>
         
-        {/* Testimonials */}
+        {/* Testimonials - Placeholder structure with empty content */}
         <div className="relative">
           <div className="flex items-center gap-3 mb-10 justify-center">
             <Users className="w-6 h-6 text-nymara-aqua" />
@@ -137,17 +138,17 @@ const InvestPartnerSection = () => {
                   <div className="w-14 h-14 rounded-full overflow-hidden border border-nymara-aqua/30">
                     <img 
                       src={testimonial.image} 
-                      alt={testimonial.author} 
+                      alt="Partner" 
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div>
-                    <div className="font-bold text-white">{testimonial.author}</div>
-                    <div className="text-sm text-nymara-aqua">{testimonial.title}</div>
+                    <div className="font-bold text-white">Partner Name</div>
+                    <div className="text-sm text-nymara-aqua">Partner Title</div>
                   </div>
                 </div>
                 
-                <p className="text-gray-300 italic">"{testimonial.quote}"</p>
+                <p className="text-gray-300 italic">Partner testimonial placeholder</p>
               </div>
             ))}
           </div>
