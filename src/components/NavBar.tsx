@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
@@ -36,23 +35,23 @@ const NavBar = () => {
     <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-nymara-darker/90 backdrop-blur-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <a href="#" className="flex items-center gap-2">
-            <img 
-              src="/lovable-uploads/fb60c100-2ee6-4319-9968-37df5f6696fa.png" 
-              alt="Nymara Logo" 
-              className="h-10 md:h-12"
-            />
+          <a href="#" className="flex items-center gap-2 group">
+            <div className="rounded-lg p-1.5 bg-white/10 backdrop-blur-sm shadow-md transform transition-transform duration-300 hover:scale-110">
+              <img 
+                src="/lovable-uploads/fb60c100-2ee6-4319-9968-37df5f6696fa.png" 
+                alt="Nymara Logo" 
+                className="h-10 md:h-12 drop-shadow-[0_0_5px_rgba(80,219,255,0.6)] brightness-110"
+              />
+            </div>
           </a>
         </div>
 
         <nav className="hidden md:flex items-center space-x-1">
-          <NavItem href="#about">About</NavItem>
-          <NavItem href="#challenge">Challenge</NavItem>
+          <NavItem href="#mission">Mission</NavItem>
           <NavItem href="#solution">Solution</NavItem>
-          <NavItem href="#tech">Technology</NavItem>
+          <NavItem href="#technology">Technology</NavItem>
+          <NavItem href="#need">Need</NavItem>
           <NavItem href="#business">Business</NavItem>
-          <NavItem href="#calculator">Calculator</NavItem>
-          <NavItem href="#invest">Invest</NavItem>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -75,3 +74,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+

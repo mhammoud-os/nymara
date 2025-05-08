@@ -92,7 +92,7 @@ const ChallengeSection = () => {
   }, []);
 
   return (
-    <section id="challenge" className="py-20 md:py-32 bg-nymara-darker relative overflow-hidden">
+    <section id="need" className="py-20 md:py-32 bg-nymara-darker relative overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-nymara-dark to-transparent"></div>
       

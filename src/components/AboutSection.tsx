@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // Team members data
@@ -32,56 +31,47 @@ const teamMembers = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="mission" className="py-20 md:py-32 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-nymara-aqua/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-nymara-aqua/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-medium mb-8">
+        <div className="max-w-5xl mx-auto mb-16">
+          <h2 className="text-4xl md:text-5xl font-medium mb-8 text-center">
             <span className="text-gradient-aqua">Our Mission</span>
           </h2>
           
-          <p className="text-lg md:text-xl text-gray-300 mb-8">
-            Nymara empowers cities to combat urban flooding by transforming<br />
-            roads into intelligent, water-absorbing infrastructure through<br />
-            advanced nanotechnology. Our AI-driven platform ensures targeted<br />
-            deployment for maximum impact and cost-efficiency.
-          </p>
-          
-          <p className="text-lg md:text-xl text-gray-300">
-            By combining data and scalable partnerships, we build climate-adaptive<br />
-            cities that thrive in the face of rising storms. We're not just building<br />
-            better roads—we're turning city streets into living sponges that protect<br />
-            billions of lives and rewrite the future of climate resilience.
-          </p>
-          
-          <div className="mt-16 p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl">
-            <h3 className="text-2xl font-medium text-nymara-aqua mb-4">Pathways Forward</h3>
-            <p className="text-gray-300 mb-4">
-              The path to scaling hyper-porous roads involves launching pilot projects<br />
-              in high-risk areas, developing global partnerships, and introducing<br />
-              financial incentives to lower adoption barriers.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-              <div className="bg-white/5 rounded-lg p-5 text-left">
-                <h4 className="text-lg font-medium text-white mb-3">Rural Resilience Networks</h4>
-                <p className="text-sm text-gray-400">
-                  Adapting our technologies to support decentralized water management in agricultural regions, protecting crops and transportation routes.
-                </p>
-              </div>
-              <div className="bg-white/5 rounded-lg p-5 text-left">
-                <h4 className="text-lg font-medium text-white mb-3">Circular Materials Strategy</h4>
-                <p className="text-sm text-gray-400">
-                  Pioneering a closed-loop production model that repurposes local waste into the fabrication of our porous surfaces.
-                </p>
-              </div>
-              <div className="bg-white/5 rounded-lg p-5 text-left">
-                <h4 className="text-lg font-medium text-white mb-3">Community-Centered Design</h4>
-                <p className="text-sm text-gray-400">
-                  Engaging residents in the co-creation of public spaces built with our materials, ensuring solutions reflect community identities.
-                </p>
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            <div className="lg:w-1/2">
+              <p className="text-lg md:text-xl text-gray-300 mb-8">
+                Nymara empowers cities to combat urban flooding by transforming
+                roads into intelligent, water-absorbing infrastructure through
+                advanced nanotechnology. Our AI-driven platform ensures targeted
+                deployment for maximum impact and cost-efficiency.
+              </p>
+              
+              <p className="text-lg md:text-xl text-gray-300">
+                By combining data and scalable partnerships, we build climate-adaptive
+                cities that thrive in the face of rising storms. We're not just building
+                better roads—we're turning city streets into living sponges that protect
+                billions of lives and rewrite the future of climate resilience.
+              </p>
+            </div>
+            
+            <div className="lg:w-1/2 mt-8 lg:mt-0">
+              <div className="relative rounded-xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/flooding.png" 
+                  alt="Flooded urban area showing the impact of climate change on cities"
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-nymara-darker/70 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                  <p className="text-white text-sm md:text-base font-medium italic">
+                    "For every $1 invested in climate resilience today, communities save $7 in future recovery costs."
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -92,3 +82,4 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+

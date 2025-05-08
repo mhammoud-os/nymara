@@ -408,7 +408,7 @@ const TechDeepDiveSection = () => {
   ];
 
   return (
-    <section id="tech" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="technology" className="py-20 md:py-32 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-nymara-darker to-transparent"></div>
       <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-nymara-aqua/5 blur-3xl"></div>
@@ -451,3 +451,4 @@ const TechDeepDiveSection = () => {
 };
 
 export default TechDeepDiveSection;
+

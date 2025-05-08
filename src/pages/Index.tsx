@@ -1,4 +1,3 @@
-
 import React from 'react';
 import NavBar from '../components/NavBar';
 import HeroSection from '../components/HeroSection';
@@ -7,8 +6,6 @@ import SolutionSection from '../components/SolutionSection';
 import TechDeepDiveSection from '../components/TechDeepDiveSection';
 import ChallengeSection from '../components/ChallengeSection';
 import BusinessModelSection from '../components/BusinessModelSection';
-import ImpactCalculatorSection from '../components/ImpactCalculatorSection';
-import InvestPartnerSection from '../components/InvestPartnerSection';
 import TeamSection from '../components/TeamSection';
 import Footer from '../components/Footer';
 
@@ -29,12 +26,11 @@ const Index = () => {
       <div className="relative z-10">
         <NavBar />
         <HeroSection />
+        <AboutSection /> {/* Mission section */}
         <SolutionSection />
         <TechDeepDiveSection />
-        <ChallengeSection />
+        <ChallengeSection /> {/* Need section */}
         <BusinessModelSection />
-        <ImpactCalculatorSection />
-        <InvestPartnerSection />
         <TeamSection />
         <Footer />
       </div>
@@ -43,4 +39,3 @@ const Index = () => {
 };
 
 export default Index;
-

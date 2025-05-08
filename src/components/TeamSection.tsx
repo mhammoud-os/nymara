@@ -5,28 +5,28 @@ import React from 'react';
 const teamMembers = [
   {
     name: "Ved Sunkari",
-    title: "Climate Resilience Engineer",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+    title: "PM",
+    image: "/team/ved.png"
   },
   {
     name: "Malek Hammoud",
-    title: "Drone-to-Data Visionary",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+    title: "Technical",
+    image: "/team/malek.png"
   },
   {
     name: "Laasya Goriparti",
-    title: "AI Integration Specialist",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+    title: "Design",
+    image: "/team/lasiya.png"
   },
   {
     name: "Anand Ajith",
-    title: "Nano-Materials Architect",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+    title: "Technical",
+    image: "/team/anand.png"
   },
   {
     name: "Bhavi",
-    title: "Urban Water Systems Specialist",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80"
+    title: "Design",
+    image: "/team/behavi.png"
   },
 ];
 

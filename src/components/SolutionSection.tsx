@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Layers, Droplet, Filter, FlaskConical, Paintbrush, Umbrella } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
@@ -298,3 +297,4 @@ const SolutionSection = () => {
 };
 
 export default SolutionSection;
+

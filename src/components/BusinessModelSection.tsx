@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Handshake, ChartBar } from 'lucide-react';
 
@@ -211,3 +210,4 @@ const BusinessModelSection = () => {
 };
 
 export default BusinessModelSection;
+
