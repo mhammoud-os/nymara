@@ -23,14 +23,12 @@ const Index = () => {
       {/* Subtle background gradient */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute inset-0 bg-gradient-radial from-nymara-navy/30 via-nymara-dark to-nymara-dark opacity-40"></div>
-        <div className="absolute top-0 inset-x-0 h-[50vh] bg-gradient-to-b from-nymara-aqua/5 to-transparent opacity-30"></div>
         <div className="absolute bottom-0 right-0 w-full md:w-1/2 h-[30vh] bg-gradient-to-t from-nymara-aqua/5 to-transparent opacity-20 blur-3xl"></div>
       </div>
       
       <div className="relative z-10">
         <NavBar />
         <HeroSection />
-        <AboutSection />
         <SolutionSection />
         <TechDeepDiveSection />
         <ChallengeSection />
@@ -45,3 +43,4 @@ const Index = () => {
 };
 
 export default Index;
+

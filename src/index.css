@@ -94,4 +94,55 @@
                       linear-gradient(to bottom, rgba(14, 165, 233, 0.15) 1px, transparent 1px);
     background-size: 30px 30px;
   }
+  
+  /* Animation for subtle floating effect */
+  .animate-subtle-float {
+    animation: subtle-float 8s ease-in-out infinite;
+  }
+  
+  @keyframes subtle-float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  /* Animation for flowing water effect */
+  .animate-flow-down {
+    animation: flow-down 2.5s linear infinite;
+  }
+  
+  @keyframes flow-down {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+  }
+  
+  /* Pulse animation with custom timing */
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
 }
+

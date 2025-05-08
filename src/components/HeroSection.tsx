@@ -14,33 +14,24 @@ const HeroSection = () => {
 
   return (
     <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 px-4 md:px-6">
-      {/* Enhanced Grid Pattern Background */}
-      <div className="absolute inset-0 grid-pattern opacity-20"></div>
+      {/* Flooded road background image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/lovable-uploads/d4cde29c-0299-4dc2-ae18-001ffb7b31d8.png" 
+          alt="Flooded road with water reflection" 
+          className="w-full h-full object-cover object-center opacity-60"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-nymara-darker/90 via-nymara-dark/80 to-nymara-darker"></div>
+      </div>
       
       {/* Subtle animated gradient blobs */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-nymara-aqua/10 rounded-full blur-3xl opacity-30 animate-subtle-float"></div>
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-nymara-navy/10 rounded-full blur-3xl opacity-20" style={{ animationDelay: '2s', animationDuration: '10s' }}></div>
-      
-      {/* Animated rain droplets */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div 
-            key={i}
-            className="absolute w-1 h-4 bg-nymara-aqua/30 rounded-full animate-rain"
-            style={{
-              left: `${Math.random() * 100}%`,
-              animationDuration: `${Math.random() * 3 + 2}s`,
-              animationDelay: `${Math.random() * 5}s`,
-              opacity: Math.random() * 0.5 + 0.2
-            }}
-          />
-        ))}
-      </div>
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-nymara-aqua/20 rounded-full blur-3xl opacity-30 animate-subtle-float"></div>
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-nymara-navy/20 rounded-full blur-3xl opacity-30" style={{ animationDelay: '2s', animationDuration: '10s' }}></div>
       
       {/* Content */}
       <div className="container mx-auto px-4 z-10 pb-24 md:pb-28">
         <div className="max-w-4xl mx-auto text-center px-2 sm:px-4">
-          <div className="inline-block bg-nymara-aqua/10 text-nymara-aqua px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <div className="inline-block bg-nymara-aqua/10 text-nymara-aqua px-4 py-2 rounded-full text-sm font-medium mb-6 backdrop-blur-md border border-nymara-aqua/30">
             Building Climate-Adaptive Infrastructure
           </div>
           
@@ -53,7 +44,9 @@ const HeroSection = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-gray-300 mt-8 mb-12 max-w-3xl mx-auto">
-            <span className="font-medium text-white">Nymara empowers cities to combat urban flooding<br />by transforming roads into intelligent, water-absorbing<br />infrastructure through advanced nanotechnology.</span>
+            <span className="font-medium text-white backdrop-blur-sm bg-nymara-darker/30 px-4 py-2 rounded-lg">
+              Nymara empowers cities to combat urban flooding<br />by transforming roads into intelligent, water-absorbing<br />infrastructure through advanced nanotechnology.
+            </span>
           </p>
           
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 mb-12 max-w-2xl mx-auto">
@@ -72,28 +65,27 @@ const HeroSection = () => {
             </a>
             <a 
               href="#challenge"
-              className="bg-transparent border border-gray-600 hover:border-nymara-aqua/50 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/5 transition-all"
+              className="bg-transparent border border-gray-600 hover:border-nymara-aqua/50 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/5 transition-all backdrop-blur-sm"
             >
               See The Challenge
             </a>
           </div>
           
-          {/* Animated Down Arrow - Moved inside the container for better positioning */}
+          {/* Animated Down Arrow */}
           <div className="flex justify-center mt-8">
             <button 
               onClick={scrollToNext}
-              className="bg-transparent text-white p-4 rounded-full border border-white/20 hover:border-nymara-aqua/50 hover:bg-white/5 transition-all"
+              className="bg-nymara-darker/50 backdrop-blur-md text-white p-4 rounded-full border border-white/20 hover:border-nymara-aqua/50 hover:bg-white/5 transition-all animate-pulse"
+              aria-label="Scroll to solution section"
             >
               <ArrowDown size={24} />
             </button>
           </div>
         </div>
       </div>
-      
-      {/* Enhanced Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-nymara-darker via-nymara-dark/90 to-nymara-darker z-[-1]"></div>
     </section>
   );
 };
 
 export default HeroSection;
+
