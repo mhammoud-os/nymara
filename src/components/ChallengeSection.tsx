@@ -1,96 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { Globe, Droplets } from 'lucide-react';
+import React from 'react';
 
 const ChallengeSection = () => {
-  const globeRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const addFloodMarker = (latitude: number, longitude: number, size: number, intensity: number) => {
-      if (!globeRef.current) return;
-      
-      // Convert geographic coordinates to position on the visible hemisphere
-      const phi = (90 - latitude) * (Math.PI / 180);
-      const theta = (longitude + 180) * (Math.PI / 180);
-      
-      const x = -Math.sin(phi) * Math.cos(theta);
-      const z = Math.sin(phi) * Math.sin(theta);
-      const y = Math.cos(phi);
-      
-      // Only show points on the visible side (crude approximation)
-      if (z > 0) {
-        // Scale to the globe size
-        const globeSize = globeRef.current.clientWidth / 2;
-        const posX = 50 + x * 40; // Convert to percentage
-        const posY = 50 - y * 40; // Convert to percentage
-        
-        // Create marker
-        const marker = document.createElement('div');
-        
-        // Apply styles
-        marker.className = 'absolute rounded-full animate-pulse-glow';
-        marker.style.backgroundColor = `rgba(14, 165, 233, ${0.3 + intensity * 0.7})`;
-        marker.style.width = `${size}px`;
-        marker.style.height = `${size}px`;
-        marker.style.left = `${posX}%`;
-        marker.style.top = `${posY}%`;
-        marker.style.transform = 'translate(-50%, -50%)';
-        
-        globeRef.current.appendChild(marker);
-      }
-    };
-    
-    // Add some flood risk markers at major cities
-    if (globeRef.current) {
-      // Clear existing markers
-      const markers = globeRef.current.querySelectorAll('.absolute.rounded-full');
-      markers.forEach(marker => marker.remove());
-      
-      // North America (New York, Miami, New Orleans)
-      addFloodMarker(40.7128, -74.0060, 16, 0.7); // New York
-      addFloodMarker(25.7617, -80.1918, 14, 0.9); // Miami
-      addFloodMarker(29.9511, -90.0715, 14, 0.8); // New Orleans
-      
-      // Asia (Mumbai, Bangkok, Manila)
-      addFloodMarker(19.0760, 72.8777, 18, 0.9); // Mumbai
-      addFloodMarker(13.7563, 100.5018, 16, 0.8); // Bangkok
-      addFloodMarker(14.5995, 120.9842, 16, 0.9); // Manila
-      
-      // Europe (Amsterdam, Venice)
-      addFloodMarker(52.3676, 4.9041, 14, 0.7); // Amsterdam
-      addFloodMarker(45.4408, 12.3155, 12, 0.8); // Venice
-      
-      // Other major flood-prone cities
-      addFloodMarker(-22.9068, -43.1729, 16, 0.7); // Rio de Janeiro
-      addFloodMarker(31.2304, 121.4737, 18, 0.8); // Shanghai
-      addFloodMarker(35.6762, 139.6503, 16, 0.6); // Tokyo
-      addFloodMarker(-33.8688, 151.2093, 14, 0.5); // Sydney
-    }
-    
-    // Create rotation animation
-    const rotationInterval = setInterval(() => {
-      if (!globeRef.current) return;
-      
-      // Rotate the markers slightly each interval
-      const markers = globeRef.current.querySelectorAll('.absolute.rounded-full');
-      markers.forEach(marker => {
-        const element = marker as HTMLElement;
-        const currentLeft = parseFloat(element.style.left);
-        let newLeft = currentLeft - 0.1;
-        
-        // Reset position if moved out of view
-        if (newLeft < 10) {
-          newLeft = 90;
-        }
-        
-        element.style.left = `${newLeft}%`;
-      });
-    }, 50);
-    
-    return () => {
-      clearInterval(rotationInterval);
-    };
-  }, []);
-
   return (
     <section id="need" className="py-20 md:py-32 bg-nymara-darker relative overflow-hidden">
       {/* Background accents */}
@@ -98,44 +8,9 @@ const ChallengeSection = () => {
       
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Globe visualization - Made this a more appropriate size */}
-            <div className="lg:w-2/5 mb-12 lg:mb-0 relative">
-              <div className="relative aspect-square max-w-md mx-auto">
-                {/* Globe base */}
-                <div className="absolute inset-0 rounded-full border border-nymara-aqua/30 animate-rotate-globe"></div>
-                <div className="absolute inset-2 rounded-full border border-nymara-aqua/20 animate-rotate-globe" style={{ animationDuration: '80s' }}></div>
-                <div className="absolute inset-4 rounded-full border border-nymara-aqua/10 animate-rotate-globe" style={{ animationDuration: '120s' }}></div>
-                
-                {/* Globe surface */}
-                <div 
-                  ref={globeRef}
-                  className="absolute inset-8 rounded-full bg-gradient-to-br from-blue-900/40 to-blue-500/20 border border-nymara-aqua/30 overflow-hidden"
-                >
-                  {/* Land masses (simplified) */}
-                  <div className="absolute w-[20%] h-[15%] bg-gray-800/40 rounded-full top-[30%] left-[25%]"></div>
-                  <div className="absolute w-[35%] h-[25%] bg-gray-800/40 rounded-full top-[20%] left-[55%]"></div>
-                  <div className="absolute w-[15%] h-[20%] bg-gray-800/40 rounded-full top-[60%] left-[30%]"></div>
-                  <div className="absolute w-[25%] h-[15%] bg-gray-800/40 rounded-full top-[65%] left-[55%]"></div>
-                  
-                  {/* Flood markers added by JS */}
-                </div>
-                
-                {/* Flooding indicators - Added to make the graphic more meaningful */}
-                <div className="absolute bottom-2 right-2 flex items-center gap-2 bg-nymara-darker/80 py-2 px-3 rounded-full backdrop-blur-sm">
-                  <Droplets className="text-nymara-aqua w-4 h-4" />
-                  <span className="text-xs text-gray-300">High-risk flood zones</span>
-                </div>
-                
-                {/* Globe icon */}
-                <div className="absolute top-4 right-4 bg-nymara-aqua/20 p-2 rounded-full">
-                  <Globe className="text-nymara-aqua w-6 h-6" />
-                </div>
-              </div>
-            </div>
-            
-            {/* Content - Expanded to use more space */}
-            <div className="lg:w-3/5 pl-0 lg:pl-6 pr-0 lg:pr-6">
+          <div className="flex flex-col items-center">
+            {/* Content section - now full width */}
+            <div className="w-full mb-16">
               <h2 className="text-4xl md:text-5xl font-medium mb-8">
                 <span className="text-white">A Planet</span>
                 <span className="text-gradient-blue ml-2">Out of Balance</span>
@@ -176,6 +51,28 @@ const ChallengeSection = () => {
                   Cities need infrastructure that doesn't just resist floods—but<br />
                   works with water from the ground up.
                 </p>
+              </div>
+            </div>
+            
+            {/* Planet image - increased height to fit width better */}
+            <div className="w-full relative">
+              <div className="relative mx-auto overflow-hidden rounded-xl shadow-2xl h-[400px] md:h-[500px] lg:h-[600px]">
+                <img 
+                  src="/planet.png" 
+                  alt="Map of global floodplains" 
+                  className="w-full h-full object-contain bg-nymara-darker"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-nymara-darker via-transparent to-transparent opacity-70"></div>
+                
+                {/* Caption */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                  <p className="text-white text-xs md:text-sm font-medium italic">
+                    Map of floodplains with high flood probability between 1985-2015, demonstrating a large global risk of the impacts of flooding.
+                  </p>
+                </div>
+                
+                {/* Subtle border effect */}
+                <div className="absolute inset-0 rounded-xl border border-nymara-aqua/30 pointer-events-none"></div>
               </div>
             </div>
           </div>

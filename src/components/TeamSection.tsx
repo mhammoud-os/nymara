@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 // Team members data
@@ -53,11 +52,11 @@ const TeamSection = () => {
               key={index} 
               className="group relative glass-morphism rounded-xl p-6 flex flex-col items-center text-center hover:border-nymara-aqua/50 transition-all duration-300 hover:-translate-y-2"
             >
-              <div className="w-32 h-32 mb-6 rounded-full overflow-hidden border-2 border-nymara-aqua/30 group-hover:border-nymara-aqua transition-all duration-300">
+              <div className="w-36 h-36 md:w-40 md:h-40 mb-6 rounded-full overflow-hidden border-2 border-nymara-aqua/30 group-hover:border-nymara-aqua transition-all duration-300 hover:shadow-lg hover:shadow-nymara-aqua/20">
                 <img 
                   src={member.image} 
                   alt={member.name} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 transform-gpu"
                 />
               </div>
               

@@ -40,22 +40,22 @@ const BusinessModelSection = () => {
   const partners = [
     {
       name: "LafargeHolcim",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Logo_Holcim.svg/2560px-Logo_Holcim.svg.png",
+      logo: "/partners/holcim.png",
       type: "Material"
     },
     {
       name: "CEMEX",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/CEMEX_logo.svg/2560px-CEMEX_logo.svg.png",
+      logo: "/partners/cemex.png",
       type: "Material"
     },
     {
       name: "BASF",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/BASF-Logo.svg/1280px-BASF-Logo.svg.png",
+      logo: "/partners/basf.png",
       type: "Chemical"
     },
     {
       name: "Heidelberg",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/HeidelbergMaterials.svg/1200px-HeidelbergMaterials.svg.png",
+      logo: "/partners/heidelberg.png",
       type: "Material"
     }
   ];
