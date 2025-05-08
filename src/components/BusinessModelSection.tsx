@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Handshake, ChartBar } from 'lucide-react';
 
@@ -35,6 +36,30 @@ const BusinessModelSection = () => {
   ];
   
   const currentCity = cityData[sliderValue];
+
+  // Partner logos
+  const partners = [
+    {
+      name: "LafargeHolcim",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Logo_Holcim.svg/2560px-Logo_Holcim.svg.png",
+      type: "Material"
+    },
+    {
+      name: "CEMEX",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/CEMEX_logo.svg/2560px-CEMEX_logo.svg.png",
+      type: "Material"
+    },
+    {
+      name: "BASF",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/BASF-Logo.svg/1280px-BASF-Logo.svg.png",
+      type: "Chemical"
+    },
+    {
+      name: "Heidelberg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/HeidelbergMaterials.svg/1200px-HeidelbergMaterials.svg.png",
+      type: "Material"
+    }
+  ];
 
   return (
     <section id="business" className="py-20 md:py-32 bg-nymara-darker relative overflow-hidden">
@@ -92,9 +117,28 @@ const BusinessModelSection = () => {
                   <span className="text-gray-300 text-sm">Co-branding opportunities with leading infrastructure companies</span>
                 </li>
               </ul>
+
+              {/* Partner Logos Section - NEW ADDITION */}
+              <div className="mt-8 pt-6 border-t border-white/10">
+                <h4 className="text-sm font-medium text-gray-400 mb-4">Our Material Partners</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {partners.map((partner) => (
+                    <div key={partner.name} className="bg-white/10 rounded-lg p-3 flex flex-col items-center justify-center">
+                      <div className="h-12 flex items-center justify-center mb-2">
+                        <img 
+                          src={partner.logo} 
+                          alt={`${partner.name} logo`} 
+                          className="max-h-8 max-w-full object-contain bg-white p-1 rounded" 
+                        />
+                      </div>
+                      <p className="text-xs text-center text-white">{partner.name}</p>
+                      <p className="text-xs text-center text-nymara-aqua">{partner.type}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-                       
-           </div>
+          </div>
             
           
           {/* Right side: City Comparison */}

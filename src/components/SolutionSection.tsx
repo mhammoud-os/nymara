@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Layers, Droplet, Filter, FlaskConical, Paintbrush } from 'lucide-react';
+import { Layers, Droplet, Filter, FlaskConical, Paintbrush, Umbrella } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
 
 const SolutionSection = () => {
@@ -75,6 +75,31 @@ const SolutionSection = () => {
     }
   ];
 
+  // Weather scenario performance data
+  const weatherScenarios = [
+    {
+      type: "Normal Rain",
+      icon: <Droplet className="h-5 w-5" />,
+      performance: "100% absorption, zero runoff",
+      intensity: "Up to 2 in/hr",
+      details: "All water infiltrates through pavement and is stored in subsurface layers"
+    },
+    {
+      type: "Heavy Rain",
+      icon: <Droplet className="h-5 w-5" />,
+      performance: "90% absorption, 10% managed runoff",
+      intensity: "2-8 in/hr",
+      details: "Most water infiltrates, minimal filtered runoff enters surface drains" 
+    },
+    {
+      type: "Severe Storm",
+      icon: <Umbrella className="h-5 w-5" />,
+      performance: "70% absorption, 30% filtered runoff",
+      intensity: "8+ in/hr",
+      details: "System manages overflow through debris-free surface drainage"
+    }
+  ];
+
   return (
     <section id="solution" className="py-16 md:py-24 bg-nymara-dark relative overflow-hidden">
       {/* Gradient background */}
@@ -129,6 +154,23 @@ const SolutionSection = () => {
                       {isActive && (
                         <div className="absolute right-4 top-4 w-3 h-3 md:w-4 md:h-4 bg-nymara-aqua rounded-full"></div>
                       )}
+
+                      {/* Water droplet animation on active layer */}
+                      {isActive && (
+                        <div className="absolute inset-0 pointer-events-none">
+                          {[...Array(5)].map((_, i) => (
+                            <div 
+                              key={i} 
+                              className="absolute bg-blue-300/40 rounded-full w-2 h-3 animate-flow-down"
+                              style={{
+                                left: `${20 + (i * 15)}%`,
+                                top: '-10px',
+                                animationDelay: `${i * 0.7}s`,
+                              }}
+                            ></div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
@@ -148,6 +190,14 @@ const SolutionSection = () => {
                     aria-label={`View ${layers[index].name} layer`}
                   ></button>
                 ))}
+              </div>
+
+              {/* Clear labels for what happens with water */}
+              <div className="absolute -right-2 -top-2 md:right-2 md:top-2 bg-nymara-aqua/90 text-white text-xs md:text-sm px-2 py-1 rounded-md font-semibold z-30">
+                Water Entry
+              </div>
+              <div className="absolute -right-2 -bottom-2 md:right-2 md:bottom-2 bg-nymara-aqua/90 text-white text-xs md:text-sm px-2 py-1 rounded-md font-semibold z-30">
+                Ground Absorption
               </div>
             </div>
             
@@ -195,6 +245,31 @@ const SolutionSection = () => {
                     <span className="text-center truncate w-full">{isMobile ? layer.name.split(' ')[0] : layer.name}</span>
                   </button>
                 ))}
+              </div>
+
+              {/* Rainfall Resilience Chart - NEW ADDITION */}
+              <div className="mt-8 bg-white/5 backdrop-blur-sm rounded-xl p-4">
+                <h4 className="text-lg md:text-xl font-medium text-white mb-4">Rainfall Resilience</h4>
+                <div className="space-y-3">
+                  {weatherScenarios.map((scenario, index) => (
+                    <div key={index} className="flex items-center gap-4 p-3 bg-white/5 rounded-lg">
+                      <div className={`rounded-full p-2 ${
+                        index === 0 ? 'bg-green-500/20' : 
+                        index === 1 ? 'bg-amber-500/20' : 'bg-red-500/20'
+                      }`}>
+                        {scenario.icon}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between">
+                          <span className="font-medium text-white">{scenario.type}</span>
+                          <span className="text-xs text-gray-300">{scenario.intensity}</span>
+                        </div>
+                        <p className="text-sm text-nymara-aqua mt-1">{scenario.performance}</p>
+                        <p className="text-xs text-gray-400 mt-0.5">{scenario.details}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
               
               {/* Total Cost */}

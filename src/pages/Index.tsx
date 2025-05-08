@@ -3,9 +3,9 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import HeroSection from '../components/HeroSection';
 import AboutSection from '../components/AboutSection';
-import ChallengeSection from '../components/ChallengeSection';
 import SolutionSection from '../components/SolutionSection';
 import TechDeepDiveSection from '../components/TechDeepDiveSection';
+import ChallengeSection from '../components/ChallengeSection';
 import BusinessModelSection from '../components/BusinessModelSection';
 import ImpactCalculatorSection from '../components/ImpactCalculatorSection';
 import InvestPartnerSection from '../components/InvestPartnerSection';
@@ -31,9 +31,9 @@ const Index = () => {
         <NavBar />
         <HeroSection />
         <AboutSection />
-        <ChallengeSection />
         <SolutionSection />
         <TechDeepDiveSection />
+        <ChallengeSection />
         <BusinessModelSection />
         <ImpactCalculatorSection />
         <InvestPartnerSection />
