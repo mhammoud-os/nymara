@@ -36,11 +36,12 @@ const NavBar = () => {
     <header className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-nymara-darker/90 backdrop-blur-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <a href="#" className="text-2xl font-bold text-white flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-nymara-aqua flex items-center justify-center">
-              <span className="text-nymara-dark">N</span>
-            </div>
-            <span>Nymara</span>
+          <a href="#" className="flex items-center gap-2">
+            <img 
+              src="/lovable-uploads/fb60c100-2ee6-4319-9968-37df5f6696fa.png" 
+              alt="Nymara Logo" 
+              className="h-10 md:h-12"
+            />
           </a>
         </div>
 
