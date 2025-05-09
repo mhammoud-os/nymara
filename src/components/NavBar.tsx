@@ -36,13 +36,13 @@ const NavBar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <a href="#" className="flex items-center gap-2 group">
-            <div className="rounded-lg p-1.5 bg-white/10 backdrop-blur-sm shadow-md transform transition-transform duration-300 hover:scale-110">
-              <img 
-                src="/lovable-uploads/fb60c100-2ee6-4319-9968-37df5f6696fa.png" 
+            <div className="hover:scale-110">
+              <img
+                src="/lovable-uploads/logo.png"
                 alt="Nymara Logo" 
                 className="h-10 md:h-12 drop-shadow-[0_0_5px_rgba(80,219,255,0.6)] brightness-110"
               />
-            </div>
+              </div>
           </a>
         </div>
 

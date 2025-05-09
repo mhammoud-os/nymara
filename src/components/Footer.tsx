@@ -33,9 +33,9 @@ const Footer = () => {
           <div className="lg:w-1/3">
             <div className="flex items-center gap-3 mb-6">
               <a href="#" className="block group">
-                <div className="rounded-lg p-1.5 bg-white/10 backdrop-blur-sm shadow-md transform transition-transform duration-300 hover:scale-110">
+                <div className="hover:scale-110">
                   <img 
-                    src="/lovable-uploads/fb60c100-2ee6-4319-9968-37df5f6696fa.png" 
+                    src="/lovable-uploads/logo.png"
                     alt="Nymara Logo" 
                     className="h-10 drop-shadow-[0_0_5px_rgba(80,219,255,0.6)] brightness-110"
                   />
