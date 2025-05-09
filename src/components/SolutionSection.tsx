@@ -112,7 +112,7 @@ const SolutionSection = () => {
   ];
 
   return (
-    <section id="solution" className="py-10 md:py-16 bg-nymara-dark relative overflow-hidden">
+    <section id="solution" className="py-16 md:py-20 bg-nymara-dark relative overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-nymara-darker via-nymara-dark to-nymara-darker opacity-70"></div>
 
