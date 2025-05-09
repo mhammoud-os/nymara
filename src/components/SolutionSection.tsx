@@ -12,14 +12,14 @@ const SolutionSection = () => {
     setActiveTab('details'); // Reset to details tab when changing layers
   };
 
-  // Layer data with theme-consistent colors
+  // Updated soil-themed color data with blue accents
   const layers = [
     {
       name: "Nanocoating",
       description: "SiO₂-based nano coating that acts as a selective filter—permitting water to pass while blocking debris and particulates >100 µm, maintaining long-term permeability",
-      color: "from-blue-300 to-blue-400",
+      color: "from-slate-500 to-slate-600", // soil-themed gradient
       icon: <Paintbrush className="h-6 w-6" />,
-      bgColor: "bg-blue-400",
+      bgColor: "bg-slate-600", // soil-themed bg color
       isInnovative: true,
       keyBenefit: "Filters debris while allowing water through",
       stats: [
@@ -31,9 +31,9 @@ const SolutionSection = () => {
     {
       name: "Porous Concrete",
       description: "Specialized pervious concrete with 20% porosity, allowing rapid water absorption while maintaining 3500 psi compressive strength for traffic loads",
-      color: "from-gray-400 to-gray-500",
+      color: "from-slate-600 to-slate-700", // soil-themed gradient
       icon: <Droplet className="h-6 w-6" />,
-      bgColor: "bg-gray-500",
+      bgColor: "bg-slate-700", // soil-themed bg color
       isInnovative: true,
       keyBenefit: "Absorbs water while supporting vehicle loads",
       stats: [
@@ -45,9 +45,9 @@ const SolutionSection = () => {
     {
       name: "Aggregate Layer",
       description: "Standard storage layer designed to hold large volumes of water, with 40% porosity and 4-6 inches thickness",
-      color: "from-blue-700 to-blue-800",
+      color: "from-slate-700 to-slate-800", // updated from-amber to slate
       icon: <Filter className="h-6 w-6" />,
-      bgColor: "bg-blue-800",
+      bgColor: "bg-slate-800", // updated bg color
       isInnovative: false,
       keyBenefit: "Stores collected water temporarily",
       stats: [
@@ -59,9 +59,9 @@ const SolutionSection = () => {
     {
       name: "Drainage Base",
       description: "Standard stable and slowly permeable layer that temporarily stores stormwater and disperses it over time, with 30% porosity and 10-16 inches thickness",
-      color: "from-blue-600 to-blue-700",
+      color: "from-slate-600 to-slate-700", // updated from-amber to slate
       icon: <Filter className="h-6 w-6" />,
-      bgColor: "bg-blue-600",
+      bgColor: "bg-slate-700", // updated bg color
       isInnovative: false,
       keyBenefit: "Disperses water gradually to ground",
       stats: [
@@ -73,9 +73,9 @@ const SolutionSection = () => {
     {
       name: "Subgrade",
       description: "Natural ground that receives filtered water, replenishing groundwater and preventing flooding",
-      color: "from-stone-700 to-stone-800",
+      color: "from-slate-500 to-slate-600", // updated from-amber to slate
       icon: <FlaskConical className="h-6 w-6" />,
-      bgColor: "bg-stone-700",
+      bgColor: "bg-slate-600", // updated bg color
       isInnovative: false,
       keyBenefit: "Absorbs filtered water back into earth",
       stats: [
@@ -143,14 +143,6 @@ const SolutionSection = () => {
           {/* Road cross-section visualization - compact version */}
           <div className="w-full lg:w-2/5 relative">
             <div className="relative h-[320px] md:h-[400px] w-full max-w-xl mx-auto border border-white/10 rounded-xl overflow-hidden shadow-2xl bg-white/5">
-              {/* Layer divider line */}
-              <div className="absolute top-[30%] left-0 w-full h-px bg-nymara-aqua/50 z-30"></div>
-              
-              {/* Single water flow animation */}
-              <div className="absolute left-1/2 top-[-5%] w-[2px] h-[110%] z-20">
-                <div className="w-full h-full bg-gradient-to-b from-transparent via-nymara-aqua/40 to-nymara-aqua/70"></div>
-              </div>
-              
               {/* Layers with fixed alignment */}
               {layers.map((layer, index) => {
                 const isActive = index === activeLayer;
@@ -170,20 +162,20 @@ const SolutionSection = () => {
                     }}
                     onClick={() => handleLayerClick(index)}
                   >
-                    {/* Layer visual - fixed border alignment */}
+                    {/* Layer visual with conditional left border */}
                     <div className={`h-full w-full relative overflow-hidden flex ${layer.bgColor}`}>
-                      {/* Consistent left border for all layers - visible only for innovative ones */}
-                      <div className={`w-1 h-full ${layer.isInnovative ? 'bg-nymara-aqua' : 'bg-transparent'}`}></div>
+                      {layer.name !== "Porous Concrete" && (
+                        <div className={`w-1 h-full ${layer.isInnovative ? 'bg-nymara-aqua' : 'bg-transparent'}`}></div>
+                      )}
                       
                       <div className="flex-1 h-full">
-                        {/* Layer label with consistent padding */}
                         <div className={`absolute inset-0 flex items-center justify-start p-2 md:p-3 transition-transform duration-300 ${isActive ? '' : 'opacity-70'}`}>
                           <div>
                             <h3 className="text-white text-sm md:text-xl font-light drop-shadow-lg flex items-center gap-1.5">
                               {layer.name}
-                              {layer.isInnovative && 
+                              {layer.isInnovative && ( // always display NEW badge if innovative
                                 <div className="bg-nymara-aqua text-black text-[10px] px-1 py-0.5 rounded-sm font-bold">NEW</div>
-                              }
+                              )}
                             </h3>
                             {isActive && (
                               <div className="mt-1 max-w-md">
@@ -432,4 +424,3 @@ const SolutionSection = () => {
 };
 
 export default SolutionSection;
-

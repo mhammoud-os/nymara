@@ -18,9 +18,9 @@ const HeroSection = () => {
         <img 
           src="/lovable-uploads/head.jpg"
           alt="Flooded road with water reflection" 
-          className="w-full h-full object-cover object-center opacity-60"
+          className="w-full h-full object-cover object-center opacity-90"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-nymara-darker/90 via-nymara-dark/80 to-nymara-darker"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-nymara-darker/70 via-nymara-dark/80 to-nymara-darker"></div>
       </div>
       
       {/* Subtle animated gradient blobs */}

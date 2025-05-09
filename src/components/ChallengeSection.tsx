@@ -11,35 +11,35 @@ const ChallengeSection = () => {
           <div className="flex flex-col items-center">
             {/* Content section - now full width */}
             <div className="w-full mb-16">
-              <h2 className="text-4xl md:text-5xl font-medium mb-8">
+              <h2 className="text-center text-4xl md:text-5xl font-medium mb-8">
                 <span className="text-white">A Planet</span>
                 <span className="text-gradient-blue ml-2">Out of Balance</span>
               </h2>
               
-              <div className="space-y-6 text-gray-300">
-                <p className="text-lg md:text-xl text-gray-300">
+              <div className="space-y-6 text-gray-300 text-center">
+                <p className="text-lg md:text-xl">
                   As of 2015, over 16% of the world's urban areas—105,657 km²—<br />
                   lie within high-risk flood zones, with climate change intensifying<br />
                   both the frequency and destructive power of urban flooding events.
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-left">
                     <h3 className="text-2xl md:text-3xl font-medium text-nymara-aqua mb-3">4.25 Billion</h3>
                     <p className="text-sm md:text-base text-gray-400">Urban residents worldwide, projected to reach 6.52 billion by 2050, putting more people at flood risk</p>
                   </div>
                   
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-left">
                     <h3 className="text-2xl md:text-3xl font-medium text-nymara-aqua mb-3">2.5%</h3>
                     <p className="text-sm md:text-base text-gray-400">Annual increase in urban land development within flood-prone areas (1985-2015)</p>
                   </div>
                   
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-left">
                     <h3 className="text-2xl md:text-3xl font-medium text-nymara-aqua mb-3">22.7%</h3>
                     <p className="text-sm md:text-base text-gray-400">Of Asia's urban development sits in high-risk flood zones—the highest of any continent</p>
                   </div>
                   
-                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-left">
                     <h3 className="text-2xl md:text-3xl font-medium text-nymara-aqua mb-3">8.9%</h3>
                     <p className="text-sm md:text-base text-gray-400">Annual increase in Asian urban areas within flood zones, showing accelerating vulnerability</p>
                   </div>
@@ -65,7 +65,7 @@ const ChallengeSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-nymara-darker via-transparent to-transparent opacity-70"></div>
                 
                 {/* Caption */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-center">
                   <p className="text-white text-xs md:text-sm font-medium italic">
                     Map of floodplains with high flood probability between 1985-2015, demonstrating a large global risk of the impacts of flooding.
                   </p>
