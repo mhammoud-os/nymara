@@ -4,7 +4,7 @@ import React from 'react';
 const teamMembers = [
   {
     name: "Ved Sunkari",
-    title: "PM",
+    title: "Project Manager",
     image: "/team/ved.png"
   },
   {
@@ -19,12 +19,12 @@ const teamMembers = [
   },
   {
     name: "Anand Ajith",
-    title: "Technical",
+    title: "Research",
     image: "/team/anand.png"
   },
   {
     name: "Bhavi",
-    title: "Design",
+    title: "Presenter",
     image: "/team/behavi.png"
   },
 ];
