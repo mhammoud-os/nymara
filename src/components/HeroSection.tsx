@@ -51,7 +51,7 @@ const HeroSection = () => {
               Discover Our Solution
             </a>
             <a 
-              href="#challenge"
+              href="#need"
               className="bg-transparent border border-gray-600 hover:border-nymara-aqua/50 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/5 transition-all backdrop-blur-sm"
             >
               See The Challenge
