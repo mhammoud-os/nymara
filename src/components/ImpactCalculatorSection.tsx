@@ -1,10 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { Calculator } from 'lucide-react';
 
 const ImpactCalculatorSection = () => {
   const [roadMiles, setRoadMiles] = useState(10);
   const [roadWidth, setRoadWidth] = useState(30);
-  const [floodRisk, setFloodRisk] = useState('medium');
   const [calculated, setCalculated] = useState(false);
   
   const [results, setResults] = useState({
@@ -26,20 +26,15 @@ const ImpactCalculatorSection = () => {
     // Base cost per square foot
     const baseCost = 8.03 * (squareFeet / 10.764); // Convert to square meters for pricing
     
-    // Risk multipliers
-    const riskMultipliers = {
-      low: 0.7,
-      medium: 1,
-      high: 1.3,
-      extreme: 1.5
-    };
+    // Risk multiplier - now using a default medium risk since we removed the selector
+    const riskMultiplier = 1; // Medium risk value
     
     // Calculate results
     const costResult = baseCost;
     const waterAbsorptionResult = squareFeet * 57.82 * 0.00433; // gallons per sq ft per inch of rain
     const maintenanceSavingsResult = baseCost * 0.34; // 34% average maintenance savings
     const co2ReductionResult = squareFeet * 0.0023; // kg CO2 reduction per sq ft vs traditional concrete
-    const floodPreventionScore = Math.min(100, Math.round(squareFeet * riskMultipliers[floodRisk as keyof typeof riskMultipliers] / 5000));
+    const floodPreventionScore = Math.min(100, Math.round(squareFeet * riskMultiplier / 5000));
     
     // Update results with a slight delay to allow for animation
     setTimeout(() => {
@@ -52,7 +47,7 @@ const ImpactCalculatorSection = () => {
       });
       setCalculated(true);
     }, 300);
-  }, [roadMiles, roadWidth, floodRisk]);
+  }, [roadMiles, roadWidth]);
 
   return (
     <section id="calculator" className="py-20 md:py-32 relative overflow-hidden">
@@ -73,7 +68,7 @@ const ImpactCalculatorSection = () => {
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left side: Calculator Inputs */}
+          {/* Left side: Calculator Inputs - removed flood risk zone */}
           <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-8">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 rounded-full bg-nymara-aqua/20 flex items-center justify-center">
@@ -123,29 +118,6 @@ const ImpactCalculatorSection = () => {
                   <span>10 ft</span>
                   <span>30 ft</span>
                   <span>60 ft</span>
-                </div>
-              </div>
-              
-              {/* Flood Risk Zone */}
-              <div>
-                <label className="text-gray-300 font-medium block mb-2">Flood Risk Zone</label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  {['low', 'medium', 'high', 'extreme'].map((risk) => (
-                    <button
-                      key={risk}
-                      className={`py-2 px-3 rounded-lg text-sm font-medium transition-all ${
-                        floodRisk === risk
-                          ? risk === 'low' ? 'bg-green-600 text-white' 
-                          : risk === 'medium' ? 'bg-yellow-600 text-white'
-                          : risk === 'high' ? 'bg-orange-600 text-white'
-                          : 'bg-red-600 text-white'
-                          : 'bg-white/5 text-gray-400 hover:bg-white/10'
-                      }`}
-                      onClick={() => setFloodRisk(risk)}
-                    >
-                      {risk.charAt(0).toUpperCase() + risk.slice(1)}
-                    </button>
-                  ))}
                 </div>
               </div>
             </div>
@@ -255,11 +227,7 @@ const ImpactCalculatorSection = () => {
                 </div>
               </div>
               
-              <div className="mt-8 text-center">
-                <button className="bg-gradient-to-r from-nymara-aqua to-blue-600 text-white px-8 py-3 rounded-full text-lg font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all">
-                  Download Detailed Report
-                </button>
-              </div>
+              {/* Download Report button removed */}
             </div>
           </div>
         </div>

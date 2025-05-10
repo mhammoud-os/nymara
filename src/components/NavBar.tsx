@@ -52,7 +52,6 @@ const NavBar = () => {
           <NavItem href="#solution">Solution</NavItem>
           <NavItem href="#technology">Technology</NavItem>
           <NavItem href="#need">Need</NavItem>
-          <NavItem href="#calculator">Calculator</NavItem>
           <NavItem href="#business">Business</NavItem>
         </nav>
 
