@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
-import { Mail, Send, Webhook } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
 import { toast } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -20,8 +20,9 @@ const formSchema = z.object({
 const Footer = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [webhookUrl, setWebhookUrl] = useState('');
-  const [showWebhookInput, setShowWebhookInput] = useState(false);
+  
+  // Discord webhook URL (pre-configured)
+  const webhookUrl = "https://discord.com/api/webhooks/1367253271500161167/J_XY1DdRUSx8QUN4lRn0d27-FnfoHH5a8Jphbyju6cWPpya63S6_yfzMRL8ts_uSMb_a";
   
   // Create form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,37 +38,31 @@ const Footer = () => {
     setIsLoading(true);
     
     try {
-      // If webhook URL is provided, send to Discord
-      if (webhookUrl) {
-        await sendToDiscord({
-          email: values.email,
-          message: values.message,
-          interest: values.interest
-        });
-      }
+      // Send to Discord
+      await sendToDiscord({
+        email: values.email,
+        message: values.message,
+        interest: values.interest
+      });
       
-      // Simulate form submission (original functionality)
+      // Show success message
+      setSubmitted(true);
+      form.reset();
+      toast("Message sent successfully! We'll be in touch soon.");
+      
+      // Reset after a few seconds
       setTimeout(() => {
-        setSubmitted(true);
-        form.reset();
-        setIsLoading(false);
-        toast("Message sent successfully! We'll be in touch soon.");
-        
-        // Reset after a few seconds
-        setTimeout(() => {
-          setSubmitted(false);
-        }, 5000);
-      }, 1000);
+        setSubmitted(false);
+      }, 5000);
     } catch (error) {
       console.error("Form submission error:", error);
       toast("Error: There was a problem sending your message. Please try again.");
+    } finally {
       setIsLoading(false);
     }
   };
 
   const sendToDiscord = async (formData: { email: string; message: string; interest: string }) => {
-    if (!webhookUrl) return;
-
     try {
       const response = await fetch(webhookUrl, {
         method: "POST",
@@ -146,33 +141,6 @@ const Footer = () => {
                 <a href="mailto:nymara@gmail.com">nymara@gmail.com</a>
               </div>
             </div>
-            
-            {/* Discord webhook configuration */}
-            <button 
-              onClick={() => setShowWebhookInput(!showWebhookInput)} 
-              className="text-sm text-nymara-aqua hover:underline mb-4 flex items-center gap-2"
-            >
-              <Webhook className="h-4 w-4" />
-              {showWebhookInput ? 'Hide Discord Webhook' : 'Configure Discord Webhook'}
-            </button>
-            
-            {showWebhookInput && (
-              <div className="mb-6">
-                <label htmlFor="webhook" className="block text-gray-300 mb-2 text-sm">
-                  Discord Webhook URL
-                </label>
-                <Input 
-                  id="webhook" 
-                  value={webhookUrl}
-                  onChange={(e) => setWebhookUrl(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-500"
-                  placeholder="https://discord.com/api/webhooks/..."
-                />
-                <p className="text-gray-500 text-xs mt-1">
-                  Enter your Discord webhook URL to receive form submissions in your Discord channel
-                </p>
-              </div>
-            )}
           </div>
           
           {/* Right column */}
@@ -195,6 +163,7 @@ const Footer = () => {
                             {...field} 
                           />
                         </FormControl>
+                        <FormMessage className="text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -217,6 +186,7 @@ const Footer = () => {
                             <option value="other">Other Inquiry</option>
                           </select>
                         </FormControl>
+                        <FormMessage className="text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -235,6 +205,7 @@ const Footer = () => {
                           {...field} 
                         />
                       </FormControl>
+                      <FormMessage className="text-red-400" />
                     </FormItem>
                   )}
                 />
