@@ -251,31 +251,32 @@ const TechDeepDiveSection = () => {
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
               <h4 className="text-white font-medium mb-3">Hybrid Modeling Pipeline</h4>
               <div className="space-y-4">
-                <div className="relative pl-8">
-                  <div className="absolute left-0 top-0 w-1 h-full bg-nymara-aqua/30"></div>
-                  <div className="absolute left-0 top-1 w-2 h-2 rounded-full bg-nymara-aqua transform -translate-x-[3px]"></div>
+                <div>
                   <div className="font-medium text-nymara-aqua">Random Forest Classification</div>
-                  <div className="text-xs text-gray-400">Predicts flood susceptibility using elevation, catchment area, pipe capacity</div>
+                  <div className="text-xs text-gray-400">
+                    Predicts flood susceptibility using elevation, catchment area, pipe capacity
+                  </div>
                 </div>
                 
-                <div className="relative pl-8">
-                  <div className="absolute left-0 top-0 w-1 h-full bg-nymara-aqua/30"></div>
-                  <div className="absolute left-0 top-1 w-2 h-2 rounded-full bg-nymara-aqua transform -translate-x-[3px]"></div>
+                <div>
                   <div className="font-medium text-nymara-aqua">CNN Analysis</div>
-                  <div className="text-xs text-gray-400">Detects micro-topographic anomalies from satellite imagery</div>
+                  <div className="text-xs text-gray-400">
+                    Detects micro-topographic anomalies from satellite imagery
+                  </div>
                 </div>
                 
-                <div className="relative pl-8">
-                  <div className="absolute left-0 top-0 w-1 h-full bg-nymara-aqua/30"></div>
-                  <div className="absolute left-0 top-1 w-2 h-2 rounded-full bg-nymara-aqua transform -translate-x-[3px]"></div>
+                <div>
                   <div className="font-medium text-nymara-aqua">Genetic Optimization</div>
-                  <div className="text-xs text-gray-400">Balances cost, flood mitigation benefit, and traffic impact</div>
+                  <div className="text-xs text-gray-400">
+                    Balances cost, flood mitigation benefit, and traffic impact
+                  </div>
                 </div>
                 
-                <div className="relative pl-8">
-                  <div className="absolute left-0 top-1 w-2 h-2 rounded-full bg-nymara-aqua transform -translate-x-[3px]"></div>
+                <div>
                   <div className="font-medium text-nymara-aqua">Explainable AI</div>
-                  <div className="text-xs text-gray-400">SHAP values and feature importance plots for transparency</div>
+                  <div className="text-xs text-gray-400">
+                    SHAP values and feature importance plots for transparency
+                  </div>
                 </div>
               </div>
             </div>
@@ -287,12 +288,16 @@ const TechDeepDiveSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <p className="text-sm text-nymara-aqua">Site-Selection Platform</p>
-                  <p className="text-lg text-white font-medium">$5,000<span className="text-sm font-normal">/year</span></p>
+                  <p className="text-lg text-white font-medium">
+                    $5,000<span className="text-sm font-normal">/year</span>
+                  </p>
                   <p className="text-xs text-gray-400">Full platform access for cities</p>
                 </div>
                 <div>
                   <p className="text-sm text-nymara-aqua">Individual Site Reports</p>
-                  <p className="text-lg text-white font-medium">$500<span className="text-sm font-normal">/report</span></p>
+                  <p className="text-lg text-white font-medium">
+                    $500<span className="text-sm font-normal">/report</span>
+                  </p>
                   <p className="text-xs text-gray-400">For targeted analysis</p>
                 </div>
               </div>
@@ -300,7 +305,9 @@ const TechDeepDiveSection = () => {
           </div>
           
           <div className="mt-6 text-sm text-white bg-nymara-aqua/10 p-4 rounded-lg">
-            <p>By targeting just 20% of city streets with the highest impact potential, Nymara helps cities maximize flood prevention while minimizing costs.</p>
+            <p>
+              By targeting just 20% of city streets with the highest impact potential, Nymara helps cities maximize flood prevention while minimizing costs.
+            </p>
           </div>
         </div>
       )

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail, Send } from 'lucide-react';
 import { toast } from "@/components/ui/sonner";
@@ -38,82 +37,73 @@ const Footer = () => {
     setIsLoading(true);
     
     try {
-      // Send to Discord
       await sendToDiscord({
         email: values.email,
-        message: values.message,
-        interest: values.interest
+        interest: values.interest,
+        message: values.message
       });
       
-      // Show success message
       setSubmitted(true);
       form.reset();
       toast("Message sent successfully! We'll be in touch soon.");
       
-      // Reset after a few seconds
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
     } catch (error) {
-      console.error("Form submission error:", error);
-      toast("Error: There was a problem sending your message. Please try again.");
+      console.error("Discord webhook error:", error);
+      toast("Error sending your message. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const sendToDiscord = async (formData: { email: string; message: string; interest: string }) => {
-    try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // Discord webhook format
-          embeds: [
+  const sendToDiscord = async (formData: { email: string; interest: string; message: string }) => {
+    const payload = {
+      embeds: [
+        {
+          title: "New Contact Form Submission",
+          color: 3447003, // Blue color
+          fields: [
             {
-              title: "New Contact Form Submission",
-              color: 3447003, // Blue color
-              fields: [
-                {
-                  name: "Email",
-                  value: formData.email,
-                },
-                {
-                  name: "Interest",
-                  value: formData.interest,
-                },
-                {
-                  name: "Message",
-                  value: formData.message || "No message provided",
-                },
-              ],
-              timestamp: new Date().toISOString(),
-              footer: {
-                text: "Sent from Nymara website",
-              },
+              name: "Email",
+              value: formData.email,
+            },
+            {
+              name: "Interest",
+              value: formData.interest,
+            },
+            {
+              name: "Message",
+              value: formData.message || "No message provided",
             },
           ],
-        }),
-      });
+          timestamp: new Date().toISOString(),
+          footer: {
+            text: "Sent from Nymara website",
+          },
+        },
+      ],
+    };
 
-      if (!response.ok) {
-        throw new Error("Failed to send to Discord webhook");
-      }
+    const response = await fetch(webhookUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
 
-      console.log("Successfully sent to Discord webhook");
-    } catch (error) {
-      console.error("Discord webhook error:", error);
-      throw error;
+    if (!response.ok) {
+      throw new Error("Failed to send to Discord webhook");
     }
   };
 
   return (
     <footer id="contact" className="bg-nymara-darker py-20 relative overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 grid-pattern opacity-10"></div>
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/20 to-transparent"></div>
+      <div className="absolute inset-0 grid-pattern opacity-10 pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black/20 to-transparent pointer-events-none"></div>
       
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-16">
@@ -176,7 +166,7 @@ const Footer = () => {
                         <FormLabel className="text-gray-300">I'm interested in</FormLabel>
                         <FormControl>
                           <select 
-                            className="w-full h-10 rounded-md bg-white/5 border border-white/10 px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-nymara-aqua/50"
+                            className="w-full h-10 rounded-md bg-white/5 border border-white/10 px-3 py-2 text-gray-400 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-nymara-aqua/50"
                             {...field}
                           >
                             <option value="partnership">Partnership Opportunities</option>
@@ -248,3 +238,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

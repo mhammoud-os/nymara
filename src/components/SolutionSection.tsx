@@ -198,18 +198,23 @@ const SolutionSection = () => {
               
               {/* Layer indicator dots */}
               <div className="absolute right-1 md:right-2 top-0 h-full flex flex-col justify-around items-center z-20">
-                {layers.map((layer, index) => (
-                  <button
-                    key={index}
-                    className={`h-2 w-2 rounded-full cursor-pointer transition-all duration-300 ${
-                      index === activeLayer 
-                        ? "bg-nymara-aqua scale-125" 
-                        : "bg-white/30 hover:bg-white/50"
-                    }`}
-                    onClick={() => handleLayerClick(index)}
-                    aria-label={`View ${layers[index].name} layer`}
-                  ></button>
-                ))}
+                {layers.map((layer, index) => {
+                  // Further adjust upward shift for the second layer dot (index 1)
+                  const extraStyle = index === 1 ? { transform: 'translateY(-15px)' } : {};
+                  return (
+                    <button
+                      key={index}
+                      style={extraStyle}
+                      className={`h-2 w-2 rounded-full cursor-pointer transition-all duration-300 ${
+                        index === activeLayer 
+                          ? "bg-nymara-aqua scale-125" 
+                          : "bg-white/30 hover:bg-white/50"
+                      }`}
+                      onClick={() => handleLayerClick(index)}
+                      aria-label={`View ${layers[index].name} layer`}
+                    ></button>
+                  );
+                })}
               </div>
 
               {/* Water entry and exit indicators */}

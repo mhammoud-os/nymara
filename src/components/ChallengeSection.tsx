@@ -54,25 +54,21 @@ const ChallengeSection = () => {
               </div>
             </div>
             
-            {/* Planet image - increased height to fit width better */}
-            <div className="w-full relative">
-              <div className="relative mx-auto overflow-hidden rounded-xl shadow-2xl h-[400px] md:h-[500px] lg:h-[600px]">
+            {/* Planet image with caption below */}
+            <div className="relative">
+              <div className="relative mx-auto overflow-hidden rounded-xl shadow-2xl h-[300px] md:h-[350px] lg:h-[400px]">
                 <img 
                   src="/planet.png" 
                   alt="Map of global floodplains" 
-                  className="w-full h-full object-contain bg-nymara-darker"
+                  className="w-full h-full object-contain rounded-xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-nymara-darker via-transparent to-transparent opacity-70"></div>
-                
-                {/* Caption */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 text-center">
-                  <p className="text-white text-xs md:text-sm font-medium italic">
-                    Map of floodplains with high flood probability between 1985-2015, demonstrating a large global risk of the impacts of flooding.
-                  </p>
-                </div>
-                
-                {/* Subtle border effect */}
-                <div className="absolute inset-0 rounded-xl border border-nymara-aqua/30 pointer-events-none"></div>
+              </div>
+              {/* New caption element below the image */}
+              <div className="mt-4 text-center">
+                <p className="text-white text-xs md:text-sm font-medium italic">
+                  Map of floodplains with high flood probability between 1985-2015, demonstrating a large global risk of the impacts of flooding.
+                </p>
               </div>
             </div>
           </div>
