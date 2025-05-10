@@ -1,3 +1,4 @@
+
 import React from 'react';
 import NavBar from '../components/NavBar';
 import HeroSection from '../components/HeroSection';
@@ -5,6 +6,7 @@ import AboutSection from '../components/AboutSection';
 import SolutionSection from '../components/SolutionSection';
 import TechDeepDiveSection from '../components/TechDeepDiveSection';
 import ChallengeSection from '../components/ChallengeSection';
+import ImpactCalculatorSection from '../components/ImpactCalculatorSection';
 import BusinessModelSection from '../components/BusinessModelSection';
 import TeamSection from '../components/TeamSection';
 import Footer from '../components/Footer';
@@ -30,6 +32,7 @@ const Index = () => {
         <SolutionSection />
         <TechDeepDiveSection />
         <ChallengeSection /> {/* Need section */}
+        <ImpactCalculatorSection />
         <BusinessModelSection />
         <TeamSection />
         <Footer />
