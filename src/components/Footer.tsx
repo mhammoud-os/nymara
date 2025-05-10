@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Mail } from 'lucide-react';
 import { toast } from "@/components/ui/sonner";
@@ -39,11 +38,7 @@ const Footer = () => {
       }, 1000);
     } catch (error) {
       console.error("Form submission error:", error);
-      toast({
-        title: "Error",
-        description: "There was a problem sending your message. Please try again.",
-        variant: "destructive",
-      });
+      toast("Error: There was a problem sending your message. Please try again.");
       setIsLoading(false);
     }
   };
