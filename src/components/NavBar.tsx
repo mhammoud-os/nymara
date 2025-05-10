@@ -55,13 +55,7 @@ const NavBar = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          <button 
-            className="text-gray-300 hover:text-white p-2 rounded-full border border-gray-700 hover:border-gray-500 transition-colors"
-            onClick={() => setIsDark(!isDark)}
-          >
-            {isDark ? <Moon size={18} className="text-yellow-200" /> : <Sun size={18} className="text-yellow-400" />}
-          </button>
-          <a 
+          <a
             href="#contact" 
             className="hidden md:block bg-gradient-to-r from-nymara-aqua to-blue-500 text-white px-5 py-2 rounded-full hover:shadow-lg hover:shadow-nymara-aqua/20 transition-all"
           >

@@ -47,42 +47,52 @@ const BusinessModelSection = () => {
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 relative overflow-hidden group hover:border-nymara-aqua/50 transition-colors">
             <div className="absolute top-0 right-0 w-32 h-32 bg-nymara-aqua/10 rounded-full blur-2xl group-hover:bg-nymara-aqua/20 transition-colors"></div>
             
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-full bg-nymara-aqua/20 flex items-center justify-center">
-                <Handshake className="w-6 h-6 text-nymara-aqua" />
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-nymara-aqua/20 flex items-center justify-center">
+                  <Handshake className="w-6 h-6 text-nymara-aqua" />
+                </div>
+                <h3 className="text-2xl font-medium text-white">Licensing Model</h3>
               </div>
-              <h3 className="text-2xl font-medium text-white">Licensing Model</h3>
             </div>
             
-            <p className="text-gray-300 mb-6">
-              We partner with global chemical and construction material<br />
-              companies to license our hyper-porous road technology at scale.<br />
-              This allows rapid deployment while maintaining quality control.
-            </p>
+            {/* New 2-column layout for description and bullet list */}
+            <div className="flex flex-col md:flex-row items-center gap-8 mb-6">
+              <div className="flex-1">
+                <p className="text-gray-300 mb-6">
+                  We partner with global chemical and construction material companies to license our hyper-porous road technology at scale. This allows rapid deployment while maintaining quality control.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-nymara-aqua text-xs">✓</span>
+                    </span>
+                    <span className="text-gray-300 text-sm">One-contract deployment across multiple markets</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-nymara-aqua text-xs">✓</span>
+                    </span>
+                    <span className="text-gray-300 text-sm">8-12% licensing fee on all installed materials</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-nymara-aqua text-xs">✓</span>
+                    </span>
+                    <span className="text-gray-300 text-sm">Co-branding opportunities with leading infrastructure companies</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="flex items-center justify-center">
+                <img 
+                  src="/business.png" 
+                  alt="Growth Icon" 
+                  className="w-48 h-48 md:w-64 md:h-64 object-contain" 
+                />
+              </div>
+            </div>
             
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <span className="text-nymara-aqua text-xs">✓</span>
-                </span>
-                <span className="text-gray-300 text-sm">One-contract deployment across multiple markets</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <span className="text-nymara-aqua text-xs">✓</span>
-                </span>
-                <span className="text-gray-300 text-sm">8-12% licensing fee on all installed materials</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-5 h-5 rounded-full bg-nymara-aqua/20 flex items-center justify-center flex-shrink-0 mt-1">
-                  <span className="text-nymara-aqua text-xs">✓</span>
-                </span>
-                <span className="text-gray-300 text-sm">Co-branding opportunities with leading infrastructure companies</span>
-              </li>
-            </ul>
-
-            {/* Partner Logos Section - Increased size */}
-            <div className="mt-8 pt-6 border-t border-white/10">
+            <div className="mt-8 pt-6 border-t border-white/10 mb-6">
               <h4 className="text-sm font-medium text-gray-400 mb-6">Our Material Partners</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {partners.map((partner) => (
@@ -101,7 +111,6 @@ const BusinessModelSection = () => {
               </div>
             </div>
             
-            {/* Added ROI information that was previously in the removed section */}
             <div className="mt-8 text-sm text-gray-300 bg-nymara-aqua/10 p-4 rounded-lg">
               Our business model creates a 3:1 ROI for cities within 5 years through direct savings on flood damage, infrastructure maintenance, and water treatment costs.
             </div>

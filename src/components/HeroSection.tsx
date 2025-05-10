@@ -5,9 +5,9 @@ const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   const scrollToNext = () => {
-    const solutionSection = document.getElementById('solution');
-    if (solutionSection) {
-      solutionSection.scrollIntoView({ behavior: 'smooth' });
+    const missionSection = document.getElementById('mission');
+    if (missionSection) {
+      missionSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -51,7 +51,7 @@ const HeroSection = () => {
               Discover Our Solution
             </a>
             <a 
-              href="#challenge"
+              href="#need"
               className="bg-transparent border border-gray-600 hover:border-nymara-aqua/50 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/5 transition-all backdrop-blur-sm"
             >
               See The Challenge
@@ -63,7 +63,7 @@ const HeroSection = () => {
             <button 
               onClick={scrollToNext}
               className="bg-nymara-darker/50 backdrop-blur-md text-white p-4 rounded-full border border-white/20 hover:border-nymara-aqua/50 hover:bg-white/5 transition-all animate-pulse"
-              aria-label="Scroll to solution section"
+              aria-label="Scroll to mission section"
             >
               <ArrowDown size={24} />
             </button>
@@ -75,3 +75,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+

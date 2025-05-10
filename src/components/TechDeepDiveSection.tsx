@@ -24,9 +24,15 @@ const TechDeepDiveSection = () => {
                 <h4 className="text-white font-medium mb-1">Interconnected Nanoscaffold</h4>
                 <p className="text-gray-400 text-sm">
                   Rigid, interconnected scaffold of silica (SiO₂) nanoparticles created using sol-gel chemistry
-                  <span className="text-xs text-nymara-aqua cursor-help ml-1" title="Source: Materials Science Engineering">
+                  <a
+                    href="https://www.researchgate.net/publication/328892871_Performance_of_nano_materials_in_pervious_concrete_pavement_A_review"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-nymara-aqua cursor-help ml-1"
+                    title="Source: Performance of Nano Materials in Pervious Concrete Pavement: A Review (2018), ResearchGate"
+                  >
                     [citation]
-                  </span>
+                  </a>
                 </p>
               </div>
             </div>
@@ -39,9 +45,15 @@ const TechDeepDiveSection = () => {
                 <h4 className="text-white font-medium mb-1">Polymer Binder Integration</h4>
                 <p className="text-gray-400 text-sm">
                   Infiltration with functionalized silanes like MEMO or ECHTMO, solidified through UV exposure
-                  <span className="text-xs text-nymara-aqua cursor-help ml-1" title="Source: MDPI Nanomaterials">
+                  <a
+                    href="https://link.springer.com/article/10.1007/s10971-018-4861-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-nymara-aqua cursor-help ml-1"
+                    title="Source: Synthesis and Characterization of Modified Polymer Binders for Nanomaterials (2018), Springer"
+                  >
                     [citation]
-                  </span>
+                  </a>
                 </p>
               </div>
             </div>
@@ -54,7 +66,10 @@ const TechDeepDiveSection = () => {
                 <h4 className="text-white font-medium mb-1">Hierarchical Pore Structure</h4>
                 <p className="text-gray-400 text-sm">
                   Multi-scale porosity from nano to meso scale enabling up to 75% porosity while filtering particles &gt;100 µm
-                  <span className="text-xs text-nymara-aqua cursor-help ml-1" title="Source: Nymara Labs, Patent Pending">
+                  <span
+                    className="text-xs text-nymara-aqua cursor-help ml-1"
+                    title="Source: Nymara Labs, Patent Pending"
+                  >
                     [patent pending]
                   </span>
                 </p>

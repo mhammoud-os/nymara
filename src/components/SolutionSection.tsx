@@ -111,6 +111,9 @@ const SolutionSection = () => {
     }
   ];
 
+  // Determine if current layer is one of the layers with shortened details
+  const isShortDetails = ["Aggregate Layer", "Drainage Base", "Subgrade"].includes(layers[activeLayer].name);
+
   return (
     <section id="solution" className="py-10 md:py-16 bg-nymara-dark relative overflow-hidden">
       {/* Gradient background */}
@@ -235,16 +238,11 @@ const SolutionSection = () => {
                 </button>
               ))}
             </div>
-            
-            {/* Section icon */}
-            <div className="absolute -top-2 -left-2 bg-nymara-aqua/20 p-2 rounded-full z-20">
-              <Layers className="text-nymara-aqua w-4 h-4" />
-            </div>
           </div>
           
           {/* Layer details - with tabs for compact layout */}
           <div className="w-full lg:w-3/5">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-5 h-full flex flex-col">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-5 flex flex-col">
               {/* Tab navigation */}
               <div className="flex border-b border-white/10 mb-4">
                 <button 
@@ -275,7 +273,7 @@ const SolutionSection = () => {
               
               {/* Layer details tab content */}
               {activeTab === 'details' && (
-                <div className="flex-1 overflow-auto">
+                <div className="flex-1">
                   <div className={`${layers[activeLayer].isInnovative ? 'block' : 'hidden'}`}>
                     <div className="inline-flex items-center gap-2 bg-nymara-aqua/20 text-nymara-aqua px-2 py-0.5 rounded-full text-xs">
                       <span className="font-bold">Our Innovation</span>
@@ -296,12 +294,13 @@ const SolutionSection = () => {
                     </p>
                   </div>
                   
-                  <p className="text-gray-300 mb-4 text-sm">
+                  {/* Modify description margin for short details */}
+                  <p className={`text-gray-300 text-sm ${isShortDetails ? 'mb-2' : 'mb-4'}`}>
                     {layers[activeLayer].description}
                   </p>
                   
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-2 mt-3">
+                  {/* Stats grid with conditional top margin */}
+                  <div className={`grid grid-cols-3 gap-2 ${isShortDetails ? 'mt-1' : 'mt-3'}`}>
                     {layers[activeLayer].stats.map((stat, index) => (
                       <div key={index} className="text-center bg-white/5 rounded-lg p-2 transition-all hover:bg-white/10">
                         <div className="text-lg md:text-xl font-bold text-white mb-0.5">{stat.value}</div>
@@ -333,7 +332,7 @@ const SolutionSection = () => {
                   <div className="space-y-2">
                     <div className="flex items-start gap-2 p-2 bg-white/5 rounded-lg">
                       <div className="mt-0.5 text-nymara-aqua"><Check className="h-4 w-4" /></div>
-                      <p className="text-gray-300 text-sm">Only requires modifying the <strong className="text-nymara-aqua">top two layers</strong> of standard road design</p>
+                      <p className="text-gray-300 text-sm">Only requires modifying the <strong className="text-nymara-aqua">top layer</strong> of standard road design</p>
                     </div>
                     <div className="flex items-start gap-2 p-2 bg-white/5 rounded-lg">
                       <div className="mt-0.5 text-nymara-aqua"><Check className="h-4 w-4" /></div>
@@ -424,3 +423,4 @@ const SolutionSection = () => {
 };
 
 export default SolutionSection;
+

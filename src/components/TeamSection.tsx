@@ -1,31 +1,37 @@
 import React from 'react';
+import { Linkedin } from 'react-feather'; // Changed: using react-feather instead of react-icons/fa
 
 // Team members data
 const teamMembers = [
   {
     name: "Ved Sunkari",
-    title: "PM",
-    image: "/team/ved.png"
+    title: "Project Manager",
+    image: "/team/ved.png",
+    linkedin: "https://www.linkedin.com/in/ved-sunkari-a28764313/"
   },
   {
     name: "Malek Hammoud",
     title: "Technical",
-    image: "/team/malek.png"
+    image: "/team/malek.png",
+    linkedin: "https://www.linkedin.com/in/malekhammoud"
   },
   {
     name: "Laasya Goriparti",
     title: "Design",
-    image: "/team/lasiya.png"
+    image: "/team/lasiya.png",
+    linkedin: "https://www.linkedin.com/in/laasya-goriparti"
   },
   {
     name: "Anand Ajith",
     title: "Technical",
-    image: "/team/anand.png"
+    image: "/team/anand.png",
+    linkedin: "https://www.linkedin.com/in/anand-ajith-786702299/"
   },
   {
     name: "Bhavi",
     title: "Design",
-    image: "/team/behavi.png"
+    image: "/team/behavi.png",
+    linkedin: "https://www.linkedin.com/in/bhavishyaa-vignesh-217626216/"
   },
 ];
 
@@ -62,6 +68,15 @@ const TeamSection = () => {
               
               <h3 className="text-xl font-medium text-white mb-1">{member.name}</h3>
               <p className="text-nymara-aqua">{member.title}</p>
+              <a 
+                href={member.linkedin} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-2 text-blue-400 hover:underline"
+                aria-label={`${member.name} LinkedIn`}
+              >
+                <Linkedin className="w-6 h-6" /> {/* Changed: replaced FaLinkedin with Linkedin */}
+              </a>
               
               {/* Glowing effect on hover */}
               <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 bg-gradient-to-r from-nymara-aqua/5 to-transparent blur transition-opacity duration-300 -z-10"></div>
@@ -81,3 +96,4 @@ const TeamSection = () => {
 };
 
 export default TeamSection;
+

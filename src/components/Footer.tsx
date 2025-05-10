@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -50,39 +50,8 @@ const Footer = () => {
             <div className="space-y-4 mb-10">
               <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
                 <Mail className="w-5 h-5 text-nymara-aqua" />
-                <a href="mailto:hello@nymara.tech">hello@nymara.tech</a>
+                <a href="mailto:nymara@gmail.com">nymara@gmail.com</a>
               </div>
-              
-              <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
-                <Phone className="w-5 h-5 text-nymara-aqua" />
-                <a href="tel:+15551234567">+1 (555) 123-4567</a>
-              </div>
-            </div>
-            
-            <div className="flex gap-4">
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-nymara-aqua/20 transition-colors group"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5 text-gray-400 group-hover:text-nymara-aqua transition-colors" />
-              </a>
-              
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-nymara-aqua/20 transition-colors group"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-nymara-aqua transition-colors" />
-              </a>
-              
-              <a 
-                href="#" 
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-nymara-aqua/20 transition-colors group"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5 text-gray-400 group-hover:text-nymara-aqua transition-colors" />
-              </a>
             </div>
           </div>
           
@@ -168,4 +137,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
