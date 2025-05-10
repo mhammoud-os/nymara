@@ -1,24 +1,100 @@
+
 import React, { useState } from 'react';
 import { Mail } from 'lucide-react';
+import { toast } from "@/components/ui/sonner";
 
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [webhookUrl, setWebhookUrl] = useState('');
+  const [showWebhookInput, setShowWebhookInput] = useState(false);
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitted(true);
-      setEmail('');
-      setMessage('');
+    setIsLoading(true);
+    
+    try {
+      // If webhook URL is provided, send to Discord
+      if (webhookUrl) {
+        await sendToDiscord({
+          email,
+          message,
+          interest: (document.getElementById('interest') as HTMLSelectElement).value
+        });
+      }
       
-      // Reset after a few seconds
+      // Simulate form submission (original functionality)
       setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    }, 1000);
+        setSubmitted(true);
+        setEmail('');
+        setMessage('');
+        setIsLoading(false);
+        
+        // Reset after a few seconds
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      }, 1000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+    }
+  };
+
+  const sendToDiscord = async (formData: { email: string; message: string; interest: string }) => {
+    if (!webhookUrl) return;
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // Discord webhook format
+          embeds: [
+            {
+              title: "New Contact Form Submission",
+              color: 3447003, // Blue color
+              fields: [
+                {
+                  name: "Email",
+                  value: formData.email,
+                },
+                {
+                  name: "Interest",
+                  value: formData.interest,
+                },
+                {
+                  name: "Message",
+                  value: formData.message || "No message provided",
+                },
+              ],
+              timestamp: new Date().toISOString(),
+              footer: {
+                text: "Sent from Nymara website",
+              },
+            },
+          ],
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send to Discord webhook");
+      }
+
+      console.log("Successfully sent to Discord webhook");
+    } catch (error) {
+      console.error("Discord webhook error:", error);
+      throw error;
+    }
   };
 
   return (
@@ -53,6 +129,33 @@ const Footer = () => {
                 <a href="mailto:nymara@gmail.com">nymara@gmail.com</a>
               </div>
             </div>
+            
+            {/* Discord webhook configuration */}
+            <button 
+              onClick={() => setShowWebhookInput(!showWebhookInput)} 
+              className="text-sm text-nymara-aqua hover:underline mb-4"
+            >
+              {showWebhookInput ? 'Hide Discord Webhook' : 'Configure Discord Webhook'}
+            </button>
+            
+            {showWebhookInput && (
+              <div className="mb-6">
+                <label htmlFor="webhook" className="block text-gray-300 mb-2 text-sm">
+                  Discord Webhook URL
+                </label>
+                <input 
+                  type="text" 
+                  id="webhook" 
+                  value={webhookUrl}
+                  onChange={(e) => setWebhookUrl(e.target.value)}
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-nymara-aqua/50 text-sm"
+                  placeholder="https://discord.com/api/webhooks/..."
+                />
+                <p className="text-gray-500 text-xs mt-1">
+                  Enter your Discord webhook URL to receive form submissions in your Discord channel
+                </p>
+              </div>
+            )}
           </div>
           
           {/* Right column */}
@@ -105,9 +208,9 @@ const Footer = () => {
                 <button 
                   type="submit" 
                   className="bg-gradient-to-r from-nymara-aqua to-blue-600 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all disabled:opacity-70"
-                  disabled={submitted}
+                  disabled={submitted || isLoading}
                 >
-                  {submitted ? "Message Sent!" : "Let's Build Resilience"}
+                  {isLoading ? "Sending..." : submitted ? "Message Sent!" : "Let's Build Resilience"}
                 </button>
                 
                 {submitted && (

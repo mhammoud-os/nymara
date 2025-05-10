@@ -11,8 +11,7 @@ const ImpactCalculatorSection = () => {
     cost: 0,
     waterAbsorption: 0,
     maintenanceSavings: 0,
-    co2Reduction: 0,
-    floodPreventionScore: 0
+    co2Reduction: 0
   });
   
   // Calculate impact when values change
@@ -34,7 +33,6 @@ const ImpactCalculatorSection = () => {
     const waterAbsorptionResult = squareFeet * 57.82 * 0.00433; // gallons per sq ft per inch of rain
     const maintenanceSavingsResult = baseCost * 0.34; // 34% average maintenance savings
     const co2ReductionResult = squareFeet * 0.0023; // kg CO2 reduction per sq ft vs traditional concrete
-    const floodPreventionScore = Math.min(100, Math.round(squareFeet * riskMultiplier / 5000));
     
     // Update results with a slight delay to allow for animation
     setTimeout(() => {
@@ -42,8 +40,7 @@ const ImpactCalculatorSection = () => {
         cost: costResult,
         waterAbsorption: waterAbsorptionResult,
         maintenanceSavings: maintenanceSavingsResult,
-        co2Reduction: co2ReductionResult,
-        floodPreventionScore: floodPreventionScore
+        co2Reduction: co2ReductionResult
       });
       setCalculated(true);
     }, 300);
@@ -204,30 +201,7 @@ const ImpactCalculatorSection = () => {
                     ></div>
                   </div>
                 </div>
-                
-                {/* Flood Prevention Score */}
-                <div className="relative">
-                  <label className="text-gray-300 font-medium block mb-2">Flood Prevention Score</label>
-                  <div 
-                    className={`text-3xl font-bold mb-1 transition-all duration-500 ${
-                      calculated ? 'text-white opacity-100 translate-y-0' : 'text-transparent opacity-0 translate-y-4'
-                    }`}
-                  >
-                    {results.floodPreventionScore}/100
-                  </div>
-                  <div className="w-full h-1 bg-gray-700 rounded">
-                    <div 
-                      className="h-full rounded transition-all duration-1000 ease-out"
-                      style={{ 
-                        width: calculated ? `${results.floodPreventionScore}%` : '0%',
-                        backgroundImage: 'linear-gradient(to right, #f97316, #ef4444)'
-                      }}
-                    ></div>
-                  </div>
-                </div>
               </div>
-              
-              {/* Download Report button removed */}
             </div>
           </div>
         </div>
