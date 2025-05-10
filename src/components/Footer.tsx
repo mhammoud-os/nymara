@@ -1,35 +1,57 @@
+
 import React, { useState } from 'react';
-import { Mail } from 'lucide-react';
+import { Mail, Send, Webhook } from 'lucide-react';
 import { toast } from "@/components/ui/sonner";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+// Form validation schema
+const formSchema = z.object({
+  email: z.string().email({ message: "Please enter a valid email address" }),
+  interest: z.string(),
+  message: z.string().min(5, { message: "Message must be at least 5 characters" }),
+});
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [webhookUrl, setWebhookUrl] = useState('');
   const [showWebhookInput, setShowWebhookInput] = useState(false);
   
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // Create form
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      interest: "partnership",
+      message: "",
+    },
+  });
+
+  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     
     try {
       // If webhook URL is provided, send to Discord
       if (webhookUrl) {
         await sendToDiscord({
-          email,
-          message,
-          interest: (document.getElementById('interest') as HTMLSelectElement).value
+          email: values.email,
+          message: values.message,
+          interest: values.interest
         });
       }
       
       // Simulate form submission (original functionality)
       setTimeout(() => {
         setSubmitted(true);
-        setEmail('');
-        setMessage('');
+        form.reset();
         setIsLoading(false);
+        toast("Message sent successfully! We'll be in touch soon.");
         
         // Reset after a few seconds
         setTimeout(() => {
@@ -128,8 +150,9 @@ const Footer = () => {
             {/* Discord webhook configuration */}
             <button 
               onClick={() => setShowWebhookInput(!showWebhookInput)} 
-              className="text-sm text-nymara-aqua hover:underline mb-4"
+              className="text-sm text-nymara-aqua hover:underline mb-4 flex items-center gap-2"
             >
+              <Webhook className="h-4 w-4" />
               {showWebhookInput ? 'Hide Discord Webhook' : 'Configure Discord Webhook'}
             </button>
             
@@ -138,12 +161,11 @@ const Footer = () => {
                 <label htmlFor="webhook" className="block text-gray-300 mb-2 text-sm">
                   Discord Webhook URL
                 </label>
-                <input 
-                  type="text" 
+                <Input 
                   id="webhook" 
                   value={webhookUrl}
                   onChange={(e) => setWebhookUrl(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-nymara-aqua/50 text-sm"
+                  className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-500"
                   placeholder="https://discord.com/api/webhooks/..."
                 />
                 <p className="text-gray-500 text-xs mt-1">
@@ -157,64 +179,84 @@ const Footer = () => {
           <div className="lg:w-2/3">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Let's Build Resilience</h3>
             
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="email" className="block text-gray-300 mb-2">Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-nymara-aqua/50"
-                    placeholder="Your email address"
-                    required
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-300">Email</FormLabel>
+                        <FormControl>
+                          <Input 
+                            placeholder="Your email address" 
+                            className="bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-nymara-aqua/50" 
+                            {...field} 
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="interest"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-gray-300">I'm interested in</FormLabel>
+                        <FormControl>
+                          <select 
+                            className="w-full h-10 rounded-md bg-white/5 border border-white/10 px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-nymara-aqua/50"
+                            {...field}
+                          >
+                            <option value="partnership">Partnership Opportunities</option>
+                            <option value="investment">Investment Information</option>
+                            <option value="technology">Technology Details</option>
+                            <option value="careers">Career Opportunities</option>
+                            <option value="other">Other Inquiry</option>
+                          </select>
+                        </FormControl>
+                      </FormItem>
+                    )}
                   />
                 </div>
                 
-                <div>
-                  <label htmlFor="interest" className="block text-gray-300 mb-2">I'm interested in</label>
-                  <select 
-                    id="interest"
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-nymara-aqua/50"
-                  >
-                    <option value="partnership">Partnership Opportunities</option>
-                    <option value="investment">Investment Information</option>
-                    <option value="technology">Technology Details</option>
-                    <option value="careers">Career Opportunities</option>
-                    <option value="other">Other Inquiry</option>
-                  </select>
-                </div>
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-gray-300 mb-2">Message</label>
-                <textarea 
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-nymara-aqua/50 h-32 resize-none"
-                  placeholder="Tell us about your city, project, or questions"
-                  required
-                ></textarea>
-              </div>
-              
-              <div className="flex justify-between items-center">
-                <button 
-                  type="submit" 
-                  className="bg-gradient-to-r from-nymara-aqua to-blue-600 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all disabled:opacity-70"
-                  disabled={submitted || isLoading}
-                >
-                  {isLoading ? "Sending..." : submitted ? "Message Sent!" : "Let's Build Resilience"}
-                </button>
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-300">Message</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Tell us about your city, project, or questions" 
+                          className="bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:ring-nymara-aqua/50 h-32 resize-none"
+                          {...field} 
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
                 
-                {submitted && (
-                  <div className="text-nymara-aqua animate-scale-in">
-                    Thank you! We'll be in touch soon.
-                  </div>
-                )}
-              </div>
-            </form>
+                <div className="flex justify-between items-center">
+                  <Button 
+                    type="submit" 
+                    className="bg-gradient-to-r from-nymara-aqua to-blue-600 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg hover:shadow-nymara-aqua/30"
+                    disabled={submitted || isLoading}
+                  >
+                    {isLoading ? "Sending..." : submitted ? "Message Sent!" : "Let's Build Resilience"}
+                    <Send className="ml-2 h-4 w-4" />
+                  </Button>
+                  
+                  {submitted && (
+                    <div className="text-nymara-aqua animate-scale-in">
+                      Thank you! We'll be in touch soon.
+                    </div>
+                  )}
+                </div>
+              </form>
+            </Form>
           </div>
         </div>
         
