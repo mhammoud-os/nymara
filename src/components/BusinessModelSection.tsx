@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Handshake, ChartBar } from 'lucide-react';
+import { Handshake, ChartBar, FileText } from 'lucide-react';
 
 const BusinessModelSection = () => {
   // Partner logos
@@ -115,6 +116,19 @@ const BusinessModelSection = () => {
               Our business model creates a 3:1 ROI for cities within 5 years through direct savings on flood damage, infrastructure maintenance, and water treatment costs.
             </div>
           </div>
+          
+          {/* Medium Article Button */}
+          <div className="flex justify-center mt-12">
+            <a 
+              href="https://medium.com/@ved_sunkari/introducing-nymara-impact-that-flows-d5898651880b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-nymara-darker px-8 py-4 rounded-full text-lg font-medium hover:shadow-lg transition-all flex items-center justify-center gap-2"
+            >
+              <FileText size={20} />
+              Read Our Medium Article
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -122,4 +136,3 @@ const BusinessModelSection = () => {
 };
 
 export default BusinessModelSection;
-

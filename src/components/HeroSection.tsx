@@ -1,5 +1,6 @@
+
 import React, { useRef } from 'react';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Youtube, FileText } from 'lucide-react';
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -45,16 +46,22 @@ const HeroSection = () => {
           
           <div className="flex flex-col md:flex-row justify-center gap-6 mt-12">
             <a 
-              href="#solution"
-              className="bg-gradient-to-r from-nymara-aqua to-blue-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all"
+              href="https://www.youtube.com/watch?v=MDODr_mdfow"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-nymara-aqua to-blue-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:shadow-lg hover:shadow-nymara-aqua/30 transition-all flex items-center justify-center gap-2"
             >
-              Discover Our Solution
+              <Youtube size={20} />
+              Watch Our Video
             </a>
             <a 
-              href="#need"
-              className="bg-transparent border border-gray-600 hover:border-nymara-aqua/50 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/5 transition-all backdrop-blur-sm"
+              href="/nymara.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-transparent border border-gray-600 hover:border-nymara-aqua/50 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-white/5 transition-all backdrop-blur-sm flex items-center justify-center gap-2"
             >
-              See The Challenge
+              <FileText size={20} />
+              Read Our Proposal
             </a>
           </div>
           
@@ -75,4 +82,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
