@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const ChallengeSection = () => {
@@ -6,7 +7,7 @@ const ChallengeSection = () => {
       {/* Background accents */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-nymara-dark to-transparent"></div>
       
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
+      <div className="container mx-auto px-6 md:px-8 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center">
             {/* Content section - now full width */}
@@ -79,4 +80,3 @@ const ChallengeSection = () => {
 };
 
 export default ChallengeSection;
-

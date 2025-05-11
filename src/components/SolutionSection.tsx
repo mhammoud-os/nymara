@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Layers, Droplet, Filter, FlaskConical, Paintbrush, Umbrella, ArrowDown, Check } from 'lucide-react';
 import { useIsMobile } from '../hooks/use-mobile';
@@ -119,7 +120,7 @@ const SolutionSection = () => {
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-b from-nymara-darker via-nymara-dark to-nymara-darker opacity-70"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-6 md:px-8 relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center">
           <span className="text-gradient-aqua">Hyper-Porous Roads</span>
         </h2>
@@ -428,4 +429,3 @@ const SolutionSection = () => {
 };
 
 export default SolutionSection;
-

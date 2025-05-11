@@ -54,7 +54,7 @@ const ImpactCalculatorSection = () => {
       <div className="absolute top-1/4 left-0 w-96 h-96 rounded-full bg-nymara-aqua/5 blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-nymara-blue/5 blur-3xl"></div>
       
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-8">
         <h2 className="text-4xl md:text-5xl font-medium mb-8 text-center">
           <span className="text-gradient-blue">See Your City in Action</span>
         </h2>

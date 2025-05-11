@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Atom, Database, FlaskConical, Filter } from 'lucide-react';
 
@@ -436,7 +437,7 @@ const TechDeepDiveSection = () => {
       <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-nymara-aqua/5 blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-nymara-orange/5 blur-3xl"></div>
       
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 md:px-8">
         <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center">
           <span className="text-gradient-aqua">Science Under the Surface</span>
         </h2>
@@ -473,4 +474,3 @@ const TechDeepDiveSection = () => {
 };
 
 export default TechDeepDiveSection;
-
