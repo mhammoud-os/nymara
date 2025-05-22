@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Mail, Send } from 'lucide-react';
 import { toast } from "@/components/ui/sonner";
@@ -20,8 +21,8 @@ const Footer = () => {
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   
-  // Discord webhook URL (pre-configured)
-  const webhookUrl = "https://discord.com/api/webhooks/1367253271500161167/J_XY1DdRUSx8QUN4lRn0d27-FnfoHH5a8Jphbyju6cWPpya63S6_yfzMRL8ts_uSMb_a";
+  // Discord webhook URL (from environment variable)
+  const webhookUrl = import.meta.env.VITE_DISCORD_WEBHOOK_URL;
   
   // Create form
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,6 +38,10 @@ const Footer = () => {
     setIsLoading(true);
     
     try {
+      if (!webhookUrl) {
+        throw new Error("Discord webhook URL not configured");
+      }
+      
       await sendToDiscord({
         email: values.email,
         interest: values.interest,
@@ -128,7 +133,7 @@ const Footer = () => {
             <div className="space-y-4 mb-10">
               <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
                 <Mail className="w-5 h-5 text-nymara-aqua" />
-                <a href="mailto:nymara@gmail.com">nymara@gmail.com</a>
+                <a href="mailto:malek@malekhammoud.com">malek@malekhammoud.com</a>
               </div>
             </div>
           </div>
@@ -238,4 +243,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
